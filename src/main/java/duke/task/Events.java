@@ -1,3 +1,5 @@
+package duke.task;
+
 public class Events extends Task {
   protected String timeOfEvent;
 
@@ -9,10 +11,6 @@ public class Events extends Task {
 
   public String getTimeOfEvent() {
     return timeOfEvent;
-  }
-
-  public void setTimeOfEvent(String timeOfEvent) {
-    this.timeOfEvent = timeOfEvent;
   }
 
   @Override

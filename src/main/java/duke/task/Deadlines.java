@@ -1,3 +1,5 @@
+package duke.task;
+
 public class Deadlines extends Task {
   protected String dueDate;
 
@@ -10,10 +12,6 @@ public class Deadlines extends Task {
 
   public String getDueDate() {
     return dueDate;
-  }
-
-  public void setDueDate(String dueDate) {
-    this.dueDate = dueDate;
   }
 
   @Override

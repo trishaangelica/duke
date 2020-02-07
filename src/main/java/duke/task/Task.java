@@ -1,5 +1,8 @@
+package duke.task;
+
 public class Task {
-  protected String description;
+
+  public String description;
   protected boolean isDone;
   protected String taskType;
 
@@ -9,24 +12,12 @@ public class Task {
     this.taskType = null;
   }
 
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
   public String getTaskType() {
     return taskType;
   }
 
   public void setTaskType(String taskType) {
     this.taskType = taskType;
-  }
-
-  public boolean isDone() {
-    return isDone;
   }
 
   public void markAsDone() {

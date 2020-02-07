@@ -1,3 +1,9 @@
+import duke.command.Command;
+import duke.exception.DukeException;
+import duke.task.Deadlines;
+import duke.task.Events;
+import duke.task.Task;
+import duke.task.ToDos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -59,9 +65,9 @@ public class Duke {
 
             case COMMAND_LIST: // list tasks
                 System.out.print(divider);
-                try{
+                try {
                     printStoredTasks(taskList);
-                }catch (DukeException e){
+                } catch (DukeException e) {
                     System.out.println(System.lineSeparator()
                             + "Well, this is awkward. You don't have any task saved yet...");
                 }
@@ -211,8 +217,7 @@ public class Duke {
         if (taskList.size() == 0) {
             throw new DukeException();
         } else {
-            System.out.println(
-                    System.lineSeparator() + "Currently, you have these items in your list: \uD83D\uDCCC\n");
+            System.out.println(System.lineSeparator() + "Currently, you have these items in your list: \uD83D\uDCCC\n");
             for (Task t : taskList) {
                 System.out.println(taskCounter + ". " + t.toString());
                 taskCounter++;
@@ -227,4 +232,6 @@ public class Duke {
     private static Task retrieveTask(ArrayList<Task> taskArrayList, int i) {
         return taskArrayList.get(i);
     }
+
 }
+
