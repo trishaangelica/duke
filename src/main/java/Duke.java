@@ -17,6 +17,8 @@ public class Duke {
     private static final String COMMAND_EVENT_DESC = "Add an event.";
     private static final String COMMAND_LIST = "list";
     private static final String COMMAND_LIST_DESC = "List all tasks at hand.";
+    private static final String COMMAND_DELETE = "delete";
+    private static final String COMMAND_DELETE_DESC = "Delete specific task from list.";
     private static final String COMMAND_DONE = "done";
     private static final String COMMAND_DONE_DESC = "Mark specific task as done.";
     private static final String COMMAND_BYE = "bye";
@@ -29,9 +31,12 @@ public class Duke {
     private static final String ERROR_DEADLINES_EXAMPLE = "|| Example: deadline submit essay /by Tues 4pm";
     private static final String ERROR_EVENTS_PARAM = "|| Parameters: event [DESCRIPTION] /at [TIME]\n";
     private static final String ERROR_EVENTS_EXAMPLE = "|| Example: event project meeting /at Mon 4pm";
+    private static final String ERROR_DELETE_PARAM = "|| Parameters: delete [TASK NUMBER]\n";
+    private static final String ERROR_DELETE_EXAMPLE = "|| Example: delete 1";
     private static final String ERROR_DONE_PARAM = "|| Parameters: done [TASK NUMBER]\n";
     private static final String ERROR_DONE_EXAMPLE = "|| Example: done 1";
     private static final String ERROR_LIST_MESSAGE = "||\t\u2639 OOPS! That task cannot be marked done.\n|| Try adding a task first. ";
+    private static final String ERROR_DELETE_MESSAGE = "||\t\u2639 OOPS! I can't delete that because you haven't added task %s yet!";
 
 
     private static final String divider = "\n - - - - - - - - - - - - - - - - - - - - - - - - \n";
@@ -54,7 +59,7 @@ public class Duke {
         while (true) {
             System.out.println("Enter command: ");
             String input = scan.nextLine();
-            final Command command = splitCommandandArgs(input);
+            final Command command = splitCommandAndArgs(input);
 
             switch (command.getCommandName()) {
             case COMMAND_BYE: // exit program
@@ -72,6 +77,20 @@ public class Duke {
                             + "Well, this is awkward. You don't have any task saved yet...");
                 }
                 System.out.print(divider);
+                break;
+
+            case COMMAND_DELETE:
+                try {
+                    deleteTask(taskList, command);
+                } catch (NumberFormatException e) {
+                    System.out.println(
+                            String.format(divider + ERROR_MESSAGE, "task number", COMMAND_DELETE)
+                                    + ERROR_DELETE_PARAM + ERROR_DELETE_EXAMPLE + divider);
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println(
+                            divider + String.format(ERROR_DELETE_MESSAGE, command.getArgs())
+                                    + divider);
+                }
                 break;
 
             case COMMAND_DONE: // mark as done
@@ -127,13 +146,24 @@ public class Duke {
         }
     }
 
+    private static void deleteTask(ArrayList<Task> taskList, Command command) {
+        int index = Integer.parseInt(String.valueOf(command.getArgs()));
+        Task t = retrieveTask(taskList, index - 1);
+        taskList.remove(index - 1);
+        System.out.print(Duke.divider + " Noted! I've removed this task:" + System.lineSeparator()
+                + "\t" + t.toString() + System.lineSeparator() + String
+                .format(" Now you have %d tasks in your list.", taskList.size()) + Duke.divider);
+
+    }
+
     private static void markTaskDone(ArrayList<Task> taskList, Command command) {
         int index = Integer.parseInt(String.valueOf(command.getArgs()));
         Task t = retrieveTask(taskList, index - 1);
         t.markAsDone();
         updateTask(t, taskList, index - 1);
-        markedDoneMessage(t);
-    }
+        System.out
+                .print(Duke.divider + " Nice! I've marked this task as done: [" + t.getStatusIcon()
+                        + "] " + t.description + Duke.divider);    }
 
     private static void getCommandInfo() {
         System.out.println(
@@ -145,7 +175,9 @@ public class Duke {
                         .format(COMMAND_MESSAGE, COMMAND_LIST, COMMAND_LIST_DESC, COMMAND_LIST)
                         + String
                         .format(COMMAND_MESSAGE, COMMAND_DONE, COMMAND_DONE_DESC, COMMAND_DONE)
-                        + String.format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE)
+                        + String.format(COMMAND_MESSAGE, COMMAND_DELETE, COMMAND_DELETE_DESC,
+                        COMMAND_DELETE) + String
+                        .format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE)
                         + divider);
     }
 
@@ -188,7 +220,7 @@ public class Duke {
         }
     }
 
-    private static Command splitCommandandArgs(String input) {
+    private static Command splitCommandAndArgs(String input) {
         String com, args;
         try {
             com = input.trim().substring(0, input.indexOf(' '));
@@ -198,12 +230,6 @@ public class Duke {
             args = null;
         }
         return new Command(com, args);
-    }
-
-    private static void markedDoneMessage(Task t) {
-        System.out
-                .print(Duke.divider + " Nice! I've marked this task as done: [" + t.getStatusIcon()
-                        + "] " + t.description + Duke.divider);
     }
 
     private static void printSuccessfulAddition(ArrayList<Task> taskList, Task newTask) {
@@ -217,7 +243,8 @@ public class Duke {
         if (taskList.size() == 0) {
             throw new DukeException();
         } else {
-            System.out.println(System.lineSeparator() + "Currently, you have these items in your list: \uD83D\uDCCC\n");
+            System.out.println(System.lineSeparator()
+                    + "Currently, you have these items in your list: \uD83D\uDCCC\n");
             for (Task t : taskList) {
                 System.out.println(taskCounter + ". " + t.toString());
                 taskCounter++;

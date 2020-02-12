@@ -85,3 +85,10 @@ Got it. I've added this task:
 Now you have 7 tasks in your list.
  - - - - - - - - - - - - - - - - - - - - - - - - 
 Enter command: 
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+ Noted! I've removed this task:
+	[E][✘] project meeting (at: Aug 6th 2-4pm)
+ Now you have 6 tasks in your list.
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+Enter command: 
