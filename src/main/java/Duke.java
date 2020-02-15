@@ -4,11 +4,12 @@ import duke.task.Deadlines;
 import duke.task.Events;
 import duke.task.Task;
 import duke.task.ToDos;
+
+import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -20,8 +21,7 @@ import java.util.Scanner;
 
 public class Duke {
 
-    private static final Path FILENAME = Paths
-            .get(System.getProperty("user.dir"), "data", "duke.txt");
+    private static final Path FILENAME = Paths.get(System.getProperty("user.dir"), "data", "duke.txt");
     private static String fileDoneStatus;
     private static final String COMMAND_TODO = "todo";
     private static final String COMMAND_TODO_DESC = "Add a simple to-do task.";
@@ -38,7 +38,7 @@ public class Duke {
     private static final String COMMAND_BYE = "bye";
     private static final String COMMAND_BYE_DESC = "Exit program.";
     private static final String COMMAND_MESSAGE = "|| %s: %s\n||  Example: %s\n||\n";
-    private static final String ERROR_MESSAGE = "||\t\u2639 OOPS! The %s of a %s command cannot be empty.\n";
+    private static final String ERROR_MESSAGE = "||\t OOPS! The %s of a %s command cannot be empty.\n";
     private static final String ERROR_TODO_PARAM = "|| Parameters: todo [DESCRIPTION]\n";
     private static final String ERROR_TODO_EXAMPLE = "|| Example: todo brainstorm ideas";
     private static final String ERROR_DEADLINES_PARAM = "|| Parameters: deadline [DESCRIPTION] /by [DUEDATE]\n";
@@ -49,33 +49,43 @@ public class Duke {
     private static final String ERROR_DELETE_EXAMPLE = "|| Example: delete 1";
     private static final String ERROR_DONE_PARAM = "|| Parameters: done [TASK NUMBER]\n";
     private static final String ERROR_DONE_EXAMPLE = "|| Example: done 1";
-    private static final String ERROR_LIST_MESSAGE = "||\t\u2639 OOPS! That task cannot be marked done.\n|| Try adding a task first. ";
-    private static final String ERROR_DELETE_MESSAGE = "||\t\u2639 OOPS! I can't delete that because you haven't added task %s yet!";
+    private static final String ERROR_LIST_MESSAGE = "||\t OOPS! That task cannot be marked done." + "\n|| Try "
+            + "adding a task first. ";
+    private static final String ERROR_DELETE_MESSAGE = "||\t OOPS! I can't delete that because"
+            + " you haven't" + " added task %s yet!";
     private static final String divider = "\n - - - - - - - - - - - - - - - - - - - - - - - - \n";
 
+
+    /**
+     * Start of duke main.
+     *
+     * @param args the args from command line
+     */
     public static void main(String[] args) {
-        String logo = " _ _ __                           \n"
-                + "|_ _   |  _ _     _   __   _      _   _ _  _ _ _\n"
-                + "    |  | / _ \\   | |/ __|[   ]  [   ]|_=_||      |\n"
-                + " _  |  || | | \\  |  /     \\ \\   / /    _   \\  \\ /\n"
-                + "| |_|  || |_|  \\ |  |      \\ \\_/ /    | | | \\  \\\n"
-                + "|_ _ _ / \\_ _/\\_\\[_ _]      \\__ /     |_| |_ _ _/";
+        String logo =
+                " _ _ __                           \n" + "|_ _   |  _ _     _   __   _      _   _ _  _ _ _\n"
+                        + "    "
+                        + "|  | / _ \\   | |/ __|[   ]  [   ]|_=_||      |\n"
+                        + " _  |  || | | \\  |  /     \\ \\   / /"
+                        + "    _   \\  \\ /\n"
+                        + "| |_|  || |_|  \\ |  |      \\ \\_/ /    | | | \\  \\\n"
+                        + "|_ _ _ / " + "\\_ _/\\_\\[_ _]      \\__ /     |_| |_ _ _/";
+
         ArrayList<Task> taskList = new ArrayList<>();
         System.out.println("\nHello from\n" + logo + ",");
-        System.out.println(String.format(divider + "|             %-34s|\n|       %-40s|",
-                "Hello! I'm Jarvis :D", "What can I do for you today?") + divider);
+        System.out.println(String.format(divider + "|             %-34s|\n|       %-40s|", "Hello! I'm Jarvis :D",
+                "What can I do for you today?") + divider);
         String input;
         Scanner scan = new Scanner(System.in);
         System.out.println(divider + "Loading previously saved tasks (if any)..\n");
         try {
-            readIOFile(taskList);
+            readFile(taskList);
             printStoredTasks(taskList);
             System.out.println("\nGreat all loaded. Let's begin to add more tasks!\n" + divider);
 
         } catch (IOException | DukeException e) {
-            System.out.println(
-                    "Well this is embarrassing, you haven't got any saved list.\nLet's create a new one!\n"
-                            + divider);
+            System.out.println("Well this is embarrassing, you haven't got any saved list.\nLet's create a new "
+                    + "one!\n" + divider);
         }
 
         while (true) {
@@ -87,8 +97,7 @@ public class Duke {
             case COMMAND_BYE: // exit program
                 System.out.println("Hang on, saving your list...");
                 outWriteTaskList(taskList);
-                System.out
-                        .print(divider + "\uD83D\uDC4B Bye. Hope to see you again soon!" + divider);
+                System.out.print(divider + " Bye. Hope to see you again soon!" + divider);
                 System.exit(0);
                 break;
 
@@ -97,8 +106,8 @@ public class Duke {
                 try {
                     printStoredTasks(taskList);
                 } catch (DukeException e) {
-                    System.out.println(System.lineSeparator()
-                            + "Well, this is awkward. You don't have any task saved yet...");
+                    System.out.println(System.lineSeparator() + "Well, this is awkward. You don't have any task saved"
+                            + " yet...");
                 }
                 System.out.print(divider);
                 break;
@@ -107,13 +116,10 @@ public class Duke {
                 try {
                     deleteTask(taskList, command);
                 } catch (NumberFormatException e) {
-                    System.out.println(
-                            String.format(divider + ERROR_MESSAGE, "task number", COMMAND_DELETE)
-                                    + ERROR_DELETE_PARAM + ERROR_DELETE_EXAMPLE + divider);
+                    System.out.println(String.format(divider + ERROR_MESSAGE, "task number", COMMAND_DELETE)
+                            + ERROR_DELETE_PARAM + ERROR_DELETE_EXAMPLE + divider);
                 } catch (IndexOutOfBoundsException e) {
-                    System.out.println(
-                            divider + String.format(ERROR_DELETE_MESSAGE, command.getArgs())
-                                    + divider);
+                    System.out.println(divider + String.format(ERROR_DELETE_MESSAGE, command.getArgs()) + divider);
                 }
                 break;
 
@@ -121,9 +127,8 @@ public class Duke {
                 try {
                     markTaskDone(taskList, command);
                 } catch (NumberFormatException e) {
-                    System.out.println(
-                            String.format(divider + ERROR_MESSAGE, "task number", COMMAND_DONE)
-                                    + ERROR_DONE_PARAM + ERROR_DONE_EXAMPLE + divider);
+                    System.out.println(String.format(divider + ERROR_MESSAGE, "task number", COMMAND_DONE)
+                            + ERROR_DONE_PARAM + ERROR_DONE_EXAMPLE + divider);
                 } catch (IndexOutOfBoundsException e) {
                     System.out.println(divider + ERROR_LIST_MESSAGE + divider);
                 }
@@ -134,9 +139,8 @@ public class Duke {
                     addNewToDo(taskList, command);
                     outWriteTaskList(taskList);
                 } catch (StringIndexOutOfBoundsException e) {
-                    System.out.println(
-                            String.format(divider + ERROR_MESSAGE, "description", COMMAND_TODO)
-                                    + ERROR_TODO_PARAM + ERROR_TODO_EXAMPLE + divider);
+                    System.out.println(String.format(divider + ERROR_MESSAGE, "description", COMMAND_TODO)
+                            + ERROR_TODO_PARAM + ERROR_TODO_EXAMPLE + divider);
                 }
                 break;
 
@@ -145,10 +149,8 @@ public class Duke {
                     addNewDeadline(taskList, command);
                     outWriteTaskList(taskList);
                 } catch (NullPointerException | StringIndexOutOfBoundsException e) {
-                    System.out.println(
-                            String.format(divider + ERROR_MESSAGE, "description and/or due date",
-                                    COMMAND_DEADLINE) + ERROR_DEADLINES_PARAM
-                                    + ERROR_DEADLINES_EXAMPLE + divider);
+                    System.out.println(String.format(divider + ERROR_MESSAGE, "description and/or due date",
+                            COMMAND_DEADLINE) + ERROR_DEADLINES_PARAM + ERROR_DEADLINES_EXAMPLE + divider);
                 }
                 break;
 
@@ -157,16 +159,14 @@ public class Duke {
                     addNewEvent(taskList, command);
                     outWriteTaskList(taskList);
                 } catch (NullPointerException | StringIndexOutOfBoundsException e) {
-                    System.out.println(
-                            String.format(divider + ERROR_MESSAGE, "description and/or time",
-                                    COMMAND_EVENT) + ERROR_EVENTS_PARAM + ERROR_EVENTS_EXAMPLE
-                                    + divider);
+                    System.out.println(String.format(divider + ERROR_MESSAGE, "description and/or time",
+                            COMMAND_EVENT) + ERROR_EVENTS_PARAM + ERROR_EVENTS_EXAMPLE + divider);
                 }
                 break;
 
             default: // Invalid input; List accepted commands
-                System.out.println(divider
-                        + "\uD83D\uDEC8 Sorry, you have entered an invalid input. \uD83D\uDEC8\n\t\tHere's a help list to get you started: \n");
+                System.out.print(divider + " Sorry, you have entered an invalid input. "
+                        + "\n\t\tHere's a help list to get you started: \n");
                 getCommandInfo();
                 break;
             }
@@ -178,10 +178,10 @@ public class Duke {
         int index = Integer.parseInt(String.valueOf(command.getArgs()));
         Task t = retrieveTask(taskList, index - 1);
         taskList.remove(index - 1);
-        deleteOnIOFile(index);
+        deleteOnFile(index);
         System.out.print(Duke.divider + " Noted! I've removed this task:" + System.lineSeparator()
-                + "\t" + t.toString() + System.lineSeparator() + String
-                .format(" Now you have %d tasks in your list.", taskList.size()) + Duke.divider);
+                + "\t" + t.toString() + System.lineSeparator()
+                + String.format(" Now you have %d tasks in your list.", taskList.size()) + Duke.divider);
 
     }
 
@@ -190,30 +190,22 @@ public class Duke {
         Task t = retrieveTask(taskList, index - 1);
         t.markAsDone();
         updateTask(t, taskList, index - 1);
-        updateIOFile(index, t);
-        System.out
-                .print(Duke.divider + " Nice! I've marked this task as done: [" + t.getStatusIcon()
-                        + "] " + t.description + Duke.divider);
+        updateFile(index, t);
+        System.out.print(Duke.divider + " Nice! I've marked this task as done: [" + t.getStatusIcon() + "] "
+                + t.description + Duke.divider);
     }
 
     private static void getCommandInfo() {
-        System.out.println(
-                String.format(COMMAND_MESSAGE, COMMAND_TODO, COMMAND_TODO_DESC, COMMAND_TODO)
-                        + String.format(COMMAND_MESSAGE, COMMAND_DEADLINE, COMMAND_DEADLINE_DESC,
-                        COMMAND_DEADLINE) + String
-                        .format(COMMAND_MESSAGE, COMMAND_EVENT, COMMAND_EVENT_DESC, COMMAND_EVENT)
-                        + String
-                        .format(COMMAND_MESSAGE, COMMAND_LIST, COMMAND_LIST_DESC, COMMAND_LIST)
-                        + String
-                        .format(COMMAND_MESSAGE, COMMAND_DONE, COMMAND_DONE_DESC, COMMAND_DONE)
-                        + String.format(COMMAND_MESSAGE, COMMAND_DELETE, COMMAND_DELETE_DESC,
-                        COMMAND_DELETE) + String
-                        .format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE)
-                        + divider);
+        System.out.println(String.format(COMMAND_MESSAGE, COMMAND_TODO, COMMAND_TODO_DESC, COMMAND_TODO)
+                + String.format(COMMAND_MESSAGE, COMMAND_DEADLINE, COMMAND_DEADLINE_DESC, COMMAND_DEADLINE)
+                + String.format(COMMAND_MESSAGE, COMMAND_EVENT, COMMAND_EVENT_DESC, COMMAND_EVENT)
+                + String.format(COMMAND_MESSAGE, COMMAND_LIST, COMMAND_LIST_DESC, COMMAND_LIST)
+                + String.format(COMMAND_MESSAGE, COMMAND_DONE, COMMAND_DONE_DESC, COMMAND_DONE)
+                + String.format(COMMAND_MESSAGE, COMMAND_DELETE, COMMAND_DELETE_DESC, COMMAND_DELETE)
+                + String.format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE) + divider);
     }
 
-    private static void addNewEvent(ArrayList<Task> taskList, Command command)
-            throws StringIndexOutOfBoundsException {
+    private static void addNewEvent(ArrayList<Task> taskList, Command command) throws StringIndexOutOfBoundsException {
         String description;
         final int indexOfAtPrefix = command.getArgs().indexOf("/at");
         description = command.getArgs().substring(0, indexOfAtPrefix);
@@ -240,8 +232,7 @@ public class Duke {
         printSuccessfulAddition(taskList, deadline);
     }
 
-    private static void addNewToDo(ArrayList<Task> taskList, Command command)
-            throws StringIndexOutOfBoundsException {
+    private static void addNewToDo(ArrayList<Task> taskList, Command command) throws StringIndexOutOfBoundsException {
         if (command.getArgs() == null) {
             throw new StringIndexOutOfBoundsException();
         } else {
@@ -252,7 +243,8 @@ public class Duke {
     }
 
     private static Command splitCommandAndArgs(String input) {
-        String com, args;
+        String com;
+        String args;
         try {
             com = input.trim().substring(0, input.indexOf(' '));
             if (com.equals("done") || com.equals("delete")) {
@@ -278,8 +270,9 @@ public class Duke {
         if (taskList.size() == 0) {
             throw new DukeException();
         } else {
-            System.out.println(System.lineSeparator()
-                    + "Currently, you have these items in your list: \uD83D\uDCCC\n");
+
+            System.out.println(System.lineSeparator() + "Currently, you have these items in your list: \n");
+
             for (Task t : taskList) {
                 System.out.println(taskCounter + ". " + t.toString());
                 taskCounter++;
@@ -296,8 +289,7 @@ public class Duke {
         return taskArrayList.get(i);
     }
 
-    private static void readIOFile(ArrayList<Task> taskArrayList)
-            throws IOException {
+    private static void readFile(ArrayList<Task> taskArrayList) throws IOException {
         FileReader fr = new FileReader(String.valueOf(FILENAME));
         BufferedReader br = new BufferedReader(fr);
         String line;
@@ -338,46 +330,46 @@ public class Duke {
                 FileWriter fw = new FileWriter(String.valueOf(FILENAME));
                 Writer output = new BufferedWriter(fw);
                 for (Task t : taskArrayList) {
-                    if (t.getStatusIcon().equals("\u2713")) {
+                    if (t.getStatusIcon().equals("done")) {
                         fileDoneStatus = "1";
                     } else {
                         fileDoneStatus = "0";
                     }
                     if (t instanceof ToDos) {
-                        output.write(
-                                t.getTaskType() + " | " + fileDoneStatus + " | " + t.description
-                                        + "\n");
+                        output.write(t.getTaskType() + " | " + fileDoneStatus + " | " + t.description + "\n");
                     } else if (t instanceof Events) {
-                        output.write(
-                                t.getTaskType() + " | " + fileDoneStatus + " | " + t.description
-                                        + "|" + ((Events) t).getTimeOfEvent() + "\n");
+                        output.write(t.getTaskType() + " | " + fileDoneStatus + " | " + t.description + "|"
+                                + ((Events) t).getTimeOfEvent() + "\n");
                     } else if (t instanceof Deadlines) {
-                        output.write(
-                                t.getTaskType() + " | " + fileDoneStatus + " | " + t.description
-                                        + "|" + ((Deadlines) t).getDueDate() + "\n");
+                        output.write(t.getTaskType() + " | " + fileDoneStatus + " | " + t.description + "|"
+                                + ((Deadlines) t).getDueDate() + "\n");
                     }
                 }
                 output.close();
             }
         } catch (IOException e) {
+            //File error
             e.printStackTrace();
         }
     }
 
-    //edit specific task in duke.txt
-    public static void updateIOFile(int lineNumber, Task t) {
-        if (t.getStatusIcon().equals("\u2713")) {
+    /**
+     * Update task in IO file.
+     *
+     * @param lineNumber line number equivalent to index of task
+     * @param t          task
+     */
+    public static void updateFile(int lineNumber, Task t) {
+        if (t.getStatusIcon().equals("done")) {
             fileDoneStatus = "1";
         } else {
             fileDoneStatus = "0";
         }
         try {
-            List<String> lines = new ArrayList<>(
-                    Files.readAllLines(FILENAME, StandardCharsets.UTF_8));
+            List<String> lines = new ArrayList<>(Files.readAllLines(FILENAME, StandardCharsets.UTF_8));
 
             if (t instanceof ToDos) {
-                lines.set(lineNumber - 1,
-                        t.getTaskType() + " | " + fileDoneStatus + " | " + t.description + "\n");
+                lines.set(lineNumber - 1, t.getTaskType() + " | " + fileDoneStatus + " | " + t.description + "\n");
             } else if (t instanceof Events) {
                 lines.set(lineNumber - 1,
                         t.getTaskType() + " | " + fileDoneStatus + " | " + t.description + "| "
@@ -390,20 +382,25 @@ public class Duke {
             }
             Files.write(FILENAME, lines, StandardCharsets.UTF_8);
         } catch (IOException e) {
+            //File error
             System.out.println(e.getMessage());
         }
 
     }
 
-    public static void deleteOnIOFile(int lineNumber) {
+    /**
+     * Delete task on IO file.
+     *
+     * @param lineNumber line number equivalent to index number of task
+     */
+    public static void deleteOnFile(int lineNumber) {
         try {
-            List<String> lines = new ArrayList<>(
-                    Files.readAllLines(FILENAME, StandardCharsets.UTF_8));
+            List<String> lines = new ArrayList<>(Files.readAllLines(FILENAME, StandardCharsets.UTF_8));
             lines.remove(lineNumber - 1);
             Files.write(FILENAME, lines, StandardCharsets.UTF_8);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
-}
 
+}

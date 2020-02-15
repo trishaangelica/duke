@@ -6,6 +6,10 @@ public class Task {
   protected boolean isDone;
   protected String taskType;
 
+  /**
+   * Represents a task object.
+   * @param description       description of task
+   */
   public Task(String description) {
     this.description = description;
     this.isDone = false;
@@ -25,11 +29,11 @@ public class Task {
   }
 
   public String getStatusIcon() {
-    return (isDone ? "\u2713" : "\u2718"); // return tick or X symbols
+    return (isDone ? "done" : "undone"); // return tick or X symbols
   }
 
   @Override
   public String toString() {
-    return "[" + getStatusIcon() + "] " + description;
+    return "-[" + getStatusIcon() + "] " + description;
   }
 }

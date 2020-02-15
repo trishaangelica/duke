@@ -1,20 +1,21 @@
 package duke.command;
+
 public class Command {
 
-    private String CommandName;
-    private String Args;
+    private String commandName;
+    private String args;
 
-    public Command(String Command, String Args) {
-        this.CommandName = Command;
-        this.Args = Args;
+    public Command(String command, String args) {
+        this.commandName = command;
+        this.args = args;
     }
 
     public String getCommandName() {
-        return CommandName;
+        return commandName;
     }
 
     public String getArgs() {
-        return Args;
+        return args;
     }
 
 }
