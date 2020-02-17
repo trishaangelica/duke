@@ -4,13 +4,14 @@ import duke.task.Deadlines;
 import duke.task.Events;
 import duke.task.Task;
 import duke.task.ToDos;
-import java.io.FileWriter;
-import java.io.Writer;
 import java.io.BufferedWriter;
-import java.io.PrintWriter;
 import java.io.BufferedReader;
+import java.io.Writer;
+import java.io.PrintWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -22,7 +23,7 @@ import java.util.Scanner;
 
 public class Duke {
 
-    private static final Path FILENAME = Paths.get(System.getProperty("user.dir"), "data", "duke.txt");
+    private static final Path FILENAME = Paths.get("duke.txt");
     private static String fileDoneStatus;
     private static final String COMMAND_TODO = "todo";
     private static final String COMMAND_TODO_DESC = "Add a simple to-do task.";
@@ -74,10 +75,13 @@ public class Duke {
             readFile(taskList);
             executeListCommand(taskList);
             System.out.println("\nAll loaded. Let's begin to add more tasks!\n" + divider);
-        } catch (IOException | DukeException e) {
+        } catch (DukeException e) {
             System.out.println("Well this is embarrassing, you haven't got any saved list.\nLet's create a new "
                     + "one!\n" + divider);
+        } catch (IOException e) {
+            System.out.println("file access error");
         }
+
 
         //noinspection InfiniteLoopStatement
         while (true) {
@@ -185,6 +189,7 @@ public class Duke {
 
     /**
      * Manipulation of user input by splitting of command and args
+     *
      * @param input user input
      */
     private static Command splitCommandAndArgs(String input) {
@@ -206,7 +211,8 @@ public class Duke {
 
     /**
      * Exit Program
-     * @param taskList array list to save to duke.txt file
+     *
+     * @param taskList array list to save to Duuke.txt file
      */
     private static void executeByeCommand(ArrayList<Task> taskList) {
         System.out.println("Hang on, saving your list...");
@@ -217,13 +223,12 @@ public class Duke {
 
     /**
      * Clear all tasks in list
-     *
      */
     private static void executeClearCommand(ArrayList<Task> taskList) {
         taskList.clear();
-        try{
+        try {
             clearFile();
-        }catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             System.out.println("File not found.");
         }
         System.out.print(divider + "List is empty now. You can add new tasks." + divider);
@@ -231,10 +236,11 @@ public class Duke {
 
     /**
      * Addition of new events task
+     *
      * @param taskList list to add to
-     * @param command command args
+     * @param command  command args
      */
-    private static void executeEventCommand(ArrayList<Task> taskList, Command command) throws StringIndexOutOfBoundsException{
+    private static void executeEventCommand(ArrayList<Task> taskList, Command command) throws StringIndexOutOfBoundsException {
         String description;
         final int indexOfAtPrefix = command.getArgs().indexOf("/at");
         description = command.getArgs().substring(0, indexOfAtPrefix);
@@ -250,8 +256,9 @@ public class Duke {
 
     /**
      * Addition of new deadlines task
+     *
      * @param taskList list to add to
-     * @param command command args
+     * @param command  command args
      */
     private static void executeDeadlineCommand(ArrayList<Task> taskList, Command command) throws StringIndexOutOfBoundsException {
         String description;
@@ -271,8 +278,9 @@ public class Duke {
 
     /**
      * Addition of new todo task
+     *
      * @param taskList list to add to
-     * @param command command args
+     * @param command  command args
      */
     private static void executeTodoCommand(ArrayList<Task> taskList, Command command) throws StringIndexOutOfBoundsException {
         if (command.getArgs() == null) {
@@ -288,7 +296,6 @@ public class Duke {
 
     /**
      * Mark specific task as done
-     *
      */
     private static void executeDoneCommand(ArrayList<Task> taskList, Command command) throws NumberFormatException, IndexOutOfBoundsException {
         int index;
@@ -301,7 +308,7 @@ public class Duke {
         }
         Task t = taskList.get(index - 1);
         t.markAsDone();
-        taskList.set(index-1, t);
+        taskList.set(index - 1, t);
         updateFile(index, t);
         System.out.print(Duke.divider + " Nice! I've marked this task as done: [" + t.getStatusIcon() + "] "
                 + t.description + Duke.divider);
@@ -309,7 +316,6 @@ public class Duke {
 
     /**
      * Remove specified task from list
-     *
      */
     private static void executeDeleteCommand(ArrayList<Task> taskList, Command command) throws NumberFormatException, IndexOutOfBoundsException {
         int index;
@@ -334,7 +340,6 @@ public class Duke {
 
     /**
      * List all stored task
-     *
      */
     private static void executeListCommand(ArrayList<Task> taskList) throws DukeException {
         System.out.print(Duke.divider);
@@ -361,14 +366,14 @@ public class Duke {
                 + String.format(COMMAND_MESSAGE, COMMAND_DONE, COMMAND_DONE_DESC, COMMAND_DONE)
                 + String.format(COMMAND_MESSAGE, COMMAND_DELETE, COMMAND_DELETE_DESC, COMMAND_DELETE)
                 + String.format(COMMAND_MESSAGE, COMMAND_BYE, COMMAND_BYE_DESC, COMMAND_BYE)
-                + String.format(COMMAND_MESSAGE,COMMAND_CLEAR,COMMAND_CLEAR_DESC,COMMAND_CLEAR)+ divider);
+                + String.format(COMMAND_MESSAGE, COMMAND_CLEAR, COMMAND_CLEAR_DESC, COMMAND_CLEAR) + divider);
     }
 
     /**
      * Display successful addition message
      *
-     * @param taskList  task array
-     * @param newTask   newly added task
+     * @param taskList task array
+     * @param newTask  newly added task
      */
     private static void showSuccessfulAddition(ArrayList<Task> taskList, Task newTask) {
         System.out.println(Duke.divider + "Got it. I've added this task: ");
@@ -377,16 +382,22 @@ public class Duke {
     }
 
     /**
-     * Read from duke.txt file. To load array list in program.
+     * Read from Duuke.txt file. To load array list in program.
      *
      * @param taskList array to update
      */
     private static void readFile(ArrayList<Task> taskList) throws IOException {
+        File savedFile = new File(String.valueOf(FILENAME));
+        if (!savedFile.exists()) {
+            savedFile.createNewFile();
+        }
         FileReader fr = new FileReader(String.valueOf(FILENAME));
         BufferedReader br = new BufferedReader(fr);
         String line;
+        //Scanner loader = new Scanner(savedFile);
         while ((line = br.readLine()) != null) {
-            String[] parse = line.trim().split("\\s*\\|\\s*");
+            //String line = loader.nextLine();
+            String[] parse = line.split("\\s*\\|\\s*");
             if (parse.length == 3) {
                 ToDos t = new ToDos(parse[2]);
                 if (parse[1].equals("1")) {
@@ -410,9 +421,9 @@ public class Duke {
             }
 
         }
-        br.close();
-        fr.close();
+
     }
+
 
     /**
      * Update task in duke.txt file.
@@ -450,7 +461,7 @@ public class Duke {
     }
 
     /**
-     * Delete task on duke.txt file.
+     * Delete task on Duuke.txt file.
      *
      * @param lineNumber line number equivalent to index number of task
      */
@@ -463,12 +474,12 @@ public class Duke {
     }
 
     /**
-     * Save task array to duke.txt file
+     * Save task array to Duuke.txt file
      *
      * @param taskList tasklist to save
      */
     private static void saveOnFile(ArrayList<Task> taskList) {
-        boolean directoryExists = Files.exists(FILENAME); // C:\cs2113T\duke\data\duke.txt
+        boolean directoryExists = Files.exists(FILENAME); // C:\cs2113T\duke\data\Duuke.txt
         try {
             if (directoryExists) {
                 FileWriter fw = new FileWriter(String.valueOf(FILENAME));
