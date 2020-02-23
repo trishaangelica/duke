@@ -1,6 +1,17 @@
 package duke.parser;
 
-import duke.command.*;
+import duke.command.Command;
+import duke.command.TodoCommand;
+import duke.command.EventCommand;
+import duke.command.DeadlineCommand;
+import duke.command.DoneCommand;
+import duke.command.DeleteCommand;
+import duke.command.ListCommand;
+import duke.command.ClearCommand;
+import duke.command.ExitCommand;
+import duke.command.HelpCommand;
+import duke.command.IncorrectCommand;
+import duke.data.task.Deadlines;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -70,20 +81,22 @@ public class Parser {
             return new TodoCommand(arguments);
         } catch (NullPointerException npe) {
             return new IncorrectCommand(System.lineSeparator()
-                    + String.format(MESSAGE_ERROR, "description", TodoCommand.COMMAND_WORD));
+                    + String.format(MESSAGE_ERROR, "description", TodoCommand.COMMAND_WORD)
+                    + TodoCommand.MESSAGE_PARAM + TodoCommand.MESSAGE_EXAMPLE);
         }
     }
 
     private Command prepareEvent(String arguments) {
-       try {
-           final int indexOfAtPrefix = arguments.indexOf("/at");
+        try {
+            final int indexOfAtPrefix = arguments.indexOf("/at");
 
-           String description = arguments.substring(0, indexOfAtPrefix);
-           String timeOfEvent = arguments.substring(indexOfAtPrefix + 3).trim();
-           return new EventCommand(description, timeOfEvent);
-       } catch (StringIndexOutOfBoundsException iob) {
-           return new IncorrectCommand(System.lineSeparator()
-                   + String.format(MESSAGE_ERROR, "description and/or time", EventCommand.COMMAND_WORD));
+            String description = arguments.substring(0, indexOfAtPrefix);
+            String timeOfEvent = arguments.substring(indexOfAtPrefix + 3).trim();
+            return new EventCommand(description, timeOfEvent);
+        } catch (StringIndexOutOfBoundsException iob) {
+            return new IncorrectCommand(System.lineSeparator()
+                    + String.format(MESSAGE_ERROR, "description and/or time", EventCommand.COMMAND_WORD)
+                    + EventCommand.MESSAGE_PARAM + EventCommand.MESSAGE_EXAMPLE);
         }
     }
 
@@ -98,7 +111,11 @@ public class Parser {
                 return new DeadlineCommand(description, datetime); //Example: 0ct 15 2019 06:20 PM
 
             } catch (DateTimeParseException dpe) {
+<<<<<<< HEAD
                 return new DeadlineCommand(description,dueDate); //store date as string as it is not in parsable format
+=======
+                return new DeadlineCommand(description,dueDate); //store date as string
+>>>>>>> branch-Level-8
             }
             } catch (StringIndexOutOfBoundsException iob) {
                 return new IncorrectCommand(System.lineSeparator()
@@ -107,6 +124,7 @@ public class Parser {
 
         }
     }
+
     /**
      * Parses arguments in the context of the delete task command.
      *
@@ -135,6 +153,7 @@ public class Parser {
     private int parseArgsAsDisplayedIndex(String args) throws NumberFormatException {
         return Integer.parseInt(args.trim());
     }
+
 
 }
 

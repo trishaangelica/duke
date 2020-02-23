@@ -2,6 +2,7 @@ package duke.command;
 
 import duke.data.TaskList;
 import duke.data.task.Deadlines;
+import java.time.LocalDateTime;
 
 import java.time.LocalDateTime;
 
@@ -18,8 +19,6 @@ public class DeadlineCommand extends Command {
     public static final String MESSAGE_EXAMPLE ="|| Example: deadline submit essay /by 2019-10-15 1600\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a simple deadline task to the list."
             + MESSAGE_PARAM + MESSAGE_EXAMPLE;
-
-
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the list.";
 
     private Deadlines toAdd;
@@ -34,8 +33,9 @@ public class DeadlineCommand extends Command {
         }
         this.toAdd = new Deadlines(desc,duedate);
     }
+
     public DeadlineCommand(String desc, LocalDateTime date) throws StringIndexOutOfBoundsException {
-        if (desc.isEmpty() || date.toString().isEmpty()) {
+        if (desc.isEmpty()||date.toString().isEmpty()){
             throw new StringIndexOutOfBoundsException();
         }
         this.toAdd = new Deadlines(desc,date);

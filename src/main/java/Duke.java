@@ -32,7 +32,6 @@ public class Duke {
             ui.showWelcomeMessage(storage.getPath());
             ui.showLoadedList();
 
-
         } catch (StorageFile.StorageOperationException | StorageFilePathException e) {
             ui.showInitFailedMessage();
             throw new RuntimeException(e);

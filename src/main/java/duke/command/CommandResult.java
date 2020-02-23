@@ -1,5 +1,7 @@
 package duke.command;
 
+import duke.ui.TextUi;
+
 /**
  * Represents the result of a command execution.
  */

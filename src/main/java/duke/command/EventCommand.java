@@ -10,9 +10,10 @@ public class EventCommand extends Command {
     public static final String COMMAND_WORD = "event";
     public static final String MESSAGE_SUCCESS = "Got it. I've added this task: \n"
             +"\t%s.\nNow you have %d tasks in your list.";
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an event task to the list.\n"
-            + "|| Parameters: event [DESCRIPTION] /at [TIME]\n"
-            + "|| Example: event project meeting /at Mon 4pm\n";
+    public static final String MESSAGE_PARAM = "\n|| Parameters: event [DESCRIPTION] /at [TIME]\n";
+    public static final String MESSAGE_EXAMPLE ="|| Example: event project meeting /at Mon 4pm\n";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an event task to the list."
+            + MESSAGE_PARAM + MESSAGE_EXAMPLE;
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the list.";
 
     private Events toAdd;

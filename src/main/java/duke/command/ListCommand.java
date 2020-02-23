@@ -12,18 +12,17 @@ import java.util.ArrayList;
 public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
     public static final String EMPTY_LIST_MESSAGE = "|| OOPS! List is currently empty.";
+    public static final String MESSAGE_PARAM = "|| Parameters: " + COMMAND_WORD+ "\n";
+    public static final String MESSAGE_EXAMPLE = "|| Example: " + COMMAND_WORD + "\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Displays all tasks stored in the list.\n"
-            + "|| Parameters: " + COMMAND_WORD
-            + "\n"
-            + "|| Example: " + COMMAND_WORD
-            +"\n";
+            + MESSAGE_PARAM + MESSAGE_EXAMPLE;
+
 
 
     @Override
     public CommandResult execute() {
         try {
-
             ArrayList<Task> copiedList = TaskList.copy();
             System.out.print(TextUi.DIVIDER);
             System.out.println("\nCurrently, you have these items in your list: \n");
