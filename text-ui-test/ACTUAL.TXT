@@ -12,83 +12,130 @@ Hello from
 |       What can I do for you today?            |
  - - - - - - - - - - - - - - - - - - - - - - - - 
 
-Enter command: 
+Using storage file : duke.txt
 
+Seems like we're starting from scratch ...
+I've created a new storage file for you!
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:todo read book]
 Got it. I've added this task: 
-	[T][✘] read book
+	[T]-[undone] read book.
 Now you have 1 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:deadline return book /by June 6th]
 Got it. I've added this task: 
-	[D][✘] return book (by: June 6th)
+	[D]-[undone] return book (by: June 6th).
 Now you have 2 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:event project meeting /at Aug 6th 2-4pm]
 Got it. I've added this task: 
-	[E][✘] project meeting (at: Aug 6th 2-4pm)
+	[E]-[undone] project meeting (at: Aug 6th 2-4pm).
 Now you have 3 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:todo join sports club]
 Got it. I've added this task: 
-	[T][✘] join sports club
+	[T]-[undone] join sports club.
 Now you have 4 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
- Nice! I've marked this task as done: [✓] read book
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
+
+Enter command: [Command entered:done 1]
+Hooray! This task has been marked done: [D]-[done] return book (by: June 6th)
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
- Nice! I've marked this task as done: [✓] join sports club
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
+
+Enter command: [Command entered:done 4]
+The task index provided is invalid
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:todo borrow book]
 Got it. I've added this task: 
-	[T][✘] borrow book
+	[T]-[undone] borrow book.
 Now you have 5 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
 
-Currently, you have these items in your list: 📌
+Enter command: [Command entered:list]
 
-1. [T][✓] read book
-2. [D][✘] return book (by: June 6th)
-3. [E][✘] project meeting (at: Aug 6th 2-4pm)
-4. [T][✓] join sports club
-5. [T][✘] borrow book
+Currently, you have these items in your list: 
+
+	1. [T]-[undone] read book
+	2. [D]-[done] return book (by: June 6th)
+	3. [E]-[undone] project meeting (at: Aug 6th 2-4pm)
+	4. [T]-[undone] join sports club
+	5. [T]-[undone] borrow book
+	5 tasks listed!
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
- - - - - - - - - - - - - - - - - - - - - - - - - 
+Enter command: [Command entered:deadline return book /by Sunday]
 Got it. I've added this task: 
-	[D][✘] return book (by: Sunday)
+	[D]-[undone] return book (by: Sunday).
 Now you have 6 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:event project meeting /at Mon 2-4pm]
 Got it. I've added this task: 
-	[E][✘] project meeting (at: Mon 2-4pm)
+	[E]-[undone] project meeting (at: Mon 2-4pm).
 Now you have 7 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
- Noted! I've removed this task:
-	[E][✘] project meeting (at: Aug 6th 2-4pm)
- Now you have 6 tasks in your list.
+
+Enter command: [Command entered:delete 3]
+Deleted task: [E]-[undone] project meeting (at: Aug 6th 2-4pm).
+	Now you have 6 tasks in your list.
+
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:find book]
+
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+todo: Adds a simple to-do task to the list.
+|| Parameters: todo [DESCRIPTION]
+|| Example: todo brainstorm ideas
+
+event: Adds an event task to the list.
+|| Parameters: event [DESCRIPTION] /at [TIME]
+|| Example: event project meeting /at Mon 4pm
+
+deadline: Adds a simple deadline task to the list.
+|| Parameters: deadline [DESCRIPTION] /by [DUEDATE]
+|| Example: deadline submit essay /by Tues 4pm
+
+done: Marks a task (identified by index number) as done in the list.
+|| Parameters: done [TASK NUMBER]
+|| Example: done 1
+
+delete: Deletes the task (identified by index number) in the list.
+|| Parameters: delete [TASK NUMBER]
+|| Example: delete 1
+
+list: Displays all tasks stored in the list.
+|| Parameters: list
+|| Example: list
+
+clear: Clears task list permanently.
+|| Parameter: clear
+|| Example: clear
+
+help: Shows program usage instructions.
+|| Parameters: help
+|| Example: help
+
+bye: Exits the program.
+|| Parameters: bye
+|| Example: bye
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
 Enter command: 
