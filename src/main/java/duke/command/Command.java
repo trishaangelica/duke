@@ -1,21 +1,31 @@
 package duke.command;
 
+import duke.common.Messages;
+import duke.data.TaskList;
+import duke.data.task.Task;
+
+import java.util.ArrayList;
+
+/**
+ * Represents an executable command.
+ */
+
 public class Command {
 
-    private String commandName;
-    private String args;
+    protected TaskList taskList;
 
-    public Command(String command, String args) {
-        this.commandName = command;
-        this.args = args;
+    public static String getMessageForTaskListShownSummary(ArrayList<Task> tasksDisplayed) {
+        return String.format(Messages.MESSAGE_TASKS_LISTED_OVERVIEW, tasksDisplayed.size());
+    }
+    public CommandResult execute() {
+        throw new UnsupportedOperationException("This method is to be implemented by child classes");
+    };
+
+    public void setData(TaskList taskList) {
+        this.taskList = taskList;
     }
 
-    public String getCommandName() {
-        return commandName;
-    }
 
-    public String getArgs() {
-        return args;
-    }
+
 
 }

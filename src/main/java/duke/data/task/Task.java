@@ -1,10 +1,12 @@
-package duke.task;
+package duke.data.task;
 
 public class Task {
 
   public String description;
-  protected boolean isDone;
-  protected String taskType;
+  public boolean isDone;
+  public String taskType;
+
+
 
   /**
    * Represents a task object.
@@ -24,6 +26,14 @@ public class Task {
     this.taskType = taskType;
   }
 
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   public void markAsDone() {
     isDone = true;
   }
@@ -35,5 +45,12 @@ public class Task {
   @Override
   public String toString() {
     return "-[" + getStatusIcon() + "] " + description;
+  }
+
+
+  public  boolean isSameTask(Task toCheck){
+    return (toCheck == this)
+            || (toCheck != null
+            && toCheck.getDescription().equals(this.getDescription()));
   }
 }

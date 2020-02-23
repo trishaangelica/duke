@@ -1,4 +1,4 @@
-package duke.task;
+package duke.data.task;
 
 public class Deadlines extends Task {
 
@@ -21,6 +21,12 @@ public class Deadlines extends Task {
 
   @Override
   public String toString() {
-    return "[" + super.getTaskType() + "]" + super.toString() + "(by: " + getDueDate() + ")";
+    return "[" + super.getTaskType() + "]" + super.toString()  + "(by: " + getDueDate() + ")";
+  }
+
+  @Override
+  public boolean isSameTask(Task toCheck) {
+    return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
+            && ((Deadlines) toCheck).getDueDate().equals(this.getDueDate()));
   }
 }

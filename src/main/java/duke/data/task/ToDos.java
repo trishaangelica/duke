@@ -1,4 +1,4 @@
-package duke.task;
+package duke.data.task;
 
 public class ToDos extends Task {
 
@@ -10,5 +10,10 @@ public class ToDos extends Task {
     @Override
     public String toString() {
         return "[" + super.getTaskType() + "]" + super.toString();
+    }
+
+    @Override
+    public boolean isSameTask(Task toCheck) {
+        return super.isSameTask(toCheck);
     }
 }
