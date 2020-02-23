@@ -81,7 +81,7 @@ public class TextUi {
         if (TaskList.size() > 0) {
             System.out.println("\nGreat we're all loaded!\nHave a look at your previously saved list!" + DIVIDER);
             TaskList.showTaskList();
-            System.out.println(TextUi.LS);
+            System.out.println(TextUi.DIVIDER + TextUi.LS);
         } else {
             System.out.println("\nSeems like we're starting from scratch ...\nI've created a new storage file for you!" + DIVIDER);
 
