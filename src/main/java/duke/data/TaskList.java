@@ -6,9 +6,9 @@ import duke.data.task.Deadlines;
 import duke.data.task.Events;
 import duke.data.task.Task;
 import duke.data.task.ToDos;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -41,11 +41,11 @@ public class TaskList {
     public static boolean contains(Task toCheck) {
         for (Task p : taskList) {
             if (p instanceof ToDos && toCheck instanceof ToDos) {
-                return (((ToDos)p).isSameTask(toCheck));
+                return (((ToDos) p).isSameTask(toCheck));
             } else if (p instanceof Events && toCheck instanceof Events) {
-                return (((Events)p).isSameTask(toCheck));
+                return (((Events) p).isSameTask(toCheck));
             } else if (p instanceof Deadlines && toCheck instanceof Deadlines) {
-                return (((Deadlines)p).isSameTask(toCheck));
+                return (((Deadlines) p).isSameTask(toCheck));
             }
         }
         return false;
@@ -102,15 +102,40 @@ public class TaskList {
         return (new ArrayList<>(taskList));
     }
 
+    public static ArrayList<Task> filterList(ArrayList<Task> taskList, String keyword) {
+
+        return (ArrayList<Task>) taskList.stream()
+                .filter(task -> task.description.contains(keyword))
+                .collect(Collectors.toList());
+    }
+
     /**
-     * Shows to user all elements in task list.
+     * Shows to user all elements in stored task list.
      */
-    public static void showTaskList() throws NullPointerException {
+    public static void showStoredTaskList() throws NullPointerException {
         int taskCounter = 1;
         if (taskList.size() == 0) {
             throw new NullPointerException();
         } else {
-            System.out.println(System.lineSeparator() + "Currently, you have these items in your list: \n");
+            for (Task t : taskList) {
+                if(taskCounter>=10){ //for pretty alignment if there's >10 tasks
+                    System.out.println("    \b"+ taskCounter + ". " + t.toString());
+                }else {
+                    System.out.println("\t" + taskCounter + ". " + t.toString());
+                }
+                taskCounter++;
+            }
+        }
+    }
+
+    /**
+     * Shows to user all elements in specified task list.
+     */
+    public static void showTaskList(ArrayList<Task> taskList) throws NullPointerException {
+        int taskCounter = 1;
+        if (taskList.size() == 0) {
+            throw new NullPointerException();
+        } else {
             for (Task t : taskList) {
                 System.out.println("\t" + taskCounter + ". " + t.toString());
                 taskCounter++;

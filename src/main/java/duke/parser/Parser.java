@@ -1,20 +1,13 @@
 package duke.parser;
 
-import duke.command.Command;
-import duke.command.TodoCommand;
-import duke.command.EventCommand;
-import duke.command.DeadlineCommand;
-import duke.command.DoneCommand;
-import duke.command.DeleteCommand;
-import duke.command.ListCommand;
-import duke.command.ClearCommand;
-import duke.command.ExitCommand;
-import duke.command.HelpCommand;
-import duke.command.IncorrectCommand;
+import duke.command.*;
 
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import static duke.common.Messages.*;
 
 public class Parser {
@@ -59,6 +52,9 @@ public class Parser {
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
 
+        case FindCommand.COMMAND_WORD:
+            return new FindCommand(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
@@ -96,10 +92,19 @@ public class Parser {
             final int indexOfByPrefix = arguments.trim().indexOf("/by");
             String description = arguments.trim().substring(0, indexOfByPrefix);
             String dueDate = arguments.substring(indexOfByPrefix + 3).trim();
-            return new DeadlineCommand(description, dueDate);
-        } catch (StringIndexOutOfBoundsException iob) {
-            return new IncorrectCommand(System.lineSeparator()
-                    + String.format(MESSAGE_ERROR, "description and/or due date", DeadlineCommand.COMMAND_WORD));
+            try {
+                DateTimeFormatter oldPattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                LocalDateTime datetime = LocalDateTime.parse(dueDate, oldPattern);
+                return new DeadlineCommand(description, datetime); //Example: 0ct 15 2019 06:20 PM
+
+            } catch (DateTimeParseException dpe) {
+                return new DeadlineCommand(description,dueDate); //store date as string as it is not in parsable format
+            }
+            } catch (StringIndexOutOfBoundsException iob) {
+                return new IncorrectCommand(System.lineSeparator()
+                        + String.format(MESSAGE_ERROR, "description and/or due date", DeadlineCommand.COMMAND_WORD)
+                        + DeadlineCommand.MESSAGE_PARAM + DeadlineCommand.MESSAGE_EXAMPLE);
+
         }
     }
     /**

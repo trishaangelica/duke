@@ -21,7 +21,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_TASK_DISPLAYED_INDEX = "The task index provided is invalid";
     public static final String MESSAGE_TASK_NOT_IN_LIST = "|| OOPS! I can't delete that because"
             + " you haven't" + " added task %s yet!";
-    public static final String MESSAGE_TASKS_LISTED_OVERVIEW = "\t%1$d tasks listed!";
+    public static final String MESSAGE_TASKS_LISTED_OVERVIEW = "\n\t%1$d tasks listed!";
     public static final String MESSAGE_WELCOME = "\nHello from\n" + LOGO + ",\n" + duke.ui.TextUi.DIVIDER
             + String.format("|             %-34s|\n|       %-40s|", "Hello! I'm Jarvis :D",
             "What can I do for you today?") + duke.ui.TextUi.DIVIDER;

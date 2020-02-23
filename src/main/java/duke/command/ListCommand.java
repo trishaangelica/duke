@@ -1,6 +1,8 @@
 package duke.command;
 import duke.data.TaskList;
 import duke.data.task.Task;
+import duke.ui.TextUi;
+
 import java.util.ArrayList;
 
 
@@ -23,7 +25,9 @@ public class ListCommand extends Command {
         try {
 
             ArrayList<Task> copiedList = TaskList.copy();
-            TaskList.showTaskList();
+            System.out.print(TextUi.DIVIDER);
+            System.out.println("\nCurrently, you have these items in your list: \n");
+            TaskList.showTaskList(copiedList);
             return new CommandResult(String.format(getMessageForTaskListShownSummary(copiedList),copiedList));
         } catch (NullPointerException e) {
             return new CommandResult(String.format(EMPTY_LIST_MESSAGE));
