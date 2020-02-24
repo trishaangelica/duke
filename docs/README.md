@@ -16,7 +16,7 @@
     
     
 
-<h2 name="introduction"> 1. Introduction</h2>
+## <a name="introduction"> 1. Introduction</h2>
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
