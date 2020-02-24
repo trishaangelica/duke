@@ -1,13 +1,10 @@
 ## Jarvis - User Guide
 
-# 
-
-1. Introduction
+# 1. Introduction
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
-## 
-2. Features 
+## 2. Features 
 *Command Format*
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `todo [DESCRIPTION]`, `DESCRIPTION` is a parameter which can be used as `todo grab breakfast`.
 
@@ -29,7 +26,7 @@ Example of usage:`todo read book`
 
 Expected outcome:
 
-<img src ="images/todo_example.png" width = "250">
+<img src ="images/todo_example.png" width = "350">
 
 &nbsp;
 
@@ -57,14 +54,14 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/deadline_example.png" width= "250">
+<img src ="images/deadline_example.png" width= "350">
 
 Example of usage:
 `deadline return book /by June 6th`
 
 Expected outcome:
 
-<img src ="images/deadline_example1.png" width="250">
+<img src ="images/deadline_example1.png" width="350">
 
 &nbsp;
 
@@ -92,14 +89,14 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/event_example.png" width ="250">
+<img src = "images/event_example.png" width ="350">
 
 Example of usage:
 `event party /at Julia's house tmr`
 
 Expected outcome:
 
-<img src = "images/event_example1.png" width = "250">
+<img src = "images/event_example1.png" width = "350">
 
 &nbsp;
 
@@ -121,7 +118,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src= "images/done_example.png" width = "250">
+<img src= "images/done_example.png" width = "350">
 
 &nbsp;
 
@@ -138,7 +135,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/list_example.png" width = "250">
+<img src = "images/list_example.png" width = "350">
 
 &nbsp;
 
@@ -158,7 +155,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/find_example.png" width = "250">
+<img src = "images/find_example.png" width = "350">
 
 &nbsp;
 
@@ -180,7 +177,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/delete_example.png" width "250">
+<img src = "images/delete_example.png" width "350">
 
 &nbsp;
 
@@ -213,7 +210,7 @@ Example of usage:`filter deadline`
 
 Expected outcome:
 
-<img src = "images/filter_deadline_example.PNG" width = "250">
+<img src = "images/filter_deadline_example.PNG" width = "350">
 
 
 Example of usage:`filter event`
@@ -222,7 +219,7 @@ Example of usage:`filter event`
 
 Expected outcome:
 
-<img src = "images/filter_event_example.PNG" width = "250">
+<img src = "images/filter_event_example.PNG" width = "350">
 
 Example of usage:`filter DATE`
 > - Displays all deadlines/events occurring on a specific date. 
@@ -246,7 +243,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/clear_example.PNG" width =  "250">
+<img src = "images/clear_example.PNG" width =  "350">
 
 &nbsp;
 
@@ -285,7 +282,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/bye.png" width = "250">
+<img src = "images/bye.png" width = "350">
 
 &nbsp;
 
