@@ -1,15 +1,8 @@
 package duke.data.task;
 
-<<<<<<< HEAD
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-=======
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
->>>>>>> branch-Level-8
+
 
 public class Deadlines extends Task {
 
@@ -29,13 +22,13 @@ public class Deadlines extends Task {
     }
 
 
+    public Deadlines(String description, LocalDateTime date) {
+        super(description);
+        super.setTaskType("D");
+        super.setDate(date);
+        this.date = date;
 
-  public Deadlines(String description, LocalDateTime date) {
-    super(description);
-    super.setTaskType("D");
-    this.date = date;
-
-  }
+    }
 
     public LocalDateTime getDate() {
         return date;
@@ -51,9 +44,9 @@ public class Deadlines extends Task {
         if (date != null) {
             DateTimeFormatter newPattern = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
             return "[" + super.getTaskType() + "]" + super.toString()
-                    + "(by: " + getDate().format(newPattern) + ")";
+                    + " (by: " + getDate().format(newPattern) + ")";
         } else {
-            return "[" + super.getTaskType() + "]" + super.toString() + "(by: " + getDueDate() + ")";
+            return "[" + super.getTaskType() + "]" + super.toString() + " (by: " + getDueDate() + ")";
         }
     }
 
@@ -62,6 +55,7 @@ public class Deadlines extends Task {
         return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
                 && ((Deadlines) toCheck).getDueDate().equals(this.getDueDate()));
     }
+
 
 }
 

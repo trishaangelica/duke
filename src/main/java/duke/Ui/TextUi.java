@@ -15,9 +15,9 @@ public class TextUi {
     /**
      * A platform independent line separator.
      */
-    private static final String LS = System.lineSeparator();
+    public static final String LS = System.lineSeparator();
 
-    public static final String DIVIDER = "\n - - - - - - - - - - - - - - - - - - - - - - - - \n";
+    public static final String DIVIDER = LS + " - - - - - - - - - - - - - - - - - - - - - - - - " + LS;
     private final Scanner in;
     private final PrintStream out;
 
@@ -55,11 +55,11 @@ public class TextUi {
     }
 
     public void showGoodbyeMessage() {
-        showToUser(MESSAGE_GOODBYE, DIVIDER, DIVIDER);
+        showToUser(MESSAGE_GOODBYE, DIVIDER);
     }
 
     public void showInitFailedMessage() {
-        showToUser(MESSAGE_INIT_FAILED, DIVIDER, DIVIDER);
+        showToUser(MESSAGE_INIT_FAILED, DIVIDER);
     }
 
     /**
@@ -80,7 +80,7 @@ public class TextUi {
     public void showLoadedList() {
         if (TaskList.size() > 0) {
             System.out.println("\nGreat we're all loaded!\nHave a look at your previously saved list!" + DIVIDER);
-            aTaskList.showStoredTaskList();
+            TaskList.showStoredTaskList();
             System.out.println(TextUi.DIVIDER + TextUi.LS);
         } else {
             System.out.println("\nSeems like we're starting from scratch ...\nI've created a new storage file for you!" + DIVIDER);

@@ -6,7 +6,12 @@ import duke.data.task.Deadlines;
 import duke.data.task.Events;
 import duke.data.task.Task;
 import duke.data.task.ToDos;
+
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -102,16 +107,56 @@ public class TaskList {
         return (new ArrayList<>(taskList));
     }
 
+    //by word
     public static ArrayList<Task> filterList(ArrayList<Task> taskList, String keyword) {
+
+        if(keyword.equals("T")||keyword.equals("E")||keyword.equals("D")){
+            return (ArrayList<Task>) taskList.stream()
+                    .filter(task -> task.taskType.equals(keyword))
+                    .collect(Collectors.toList());
+        }
+        else if(keyword.matches(".*done.*")){
+            return (ArrayList<Task>) taskList.stream()
+                    .filter(task -> task.getStatus().equals(keyword))
+                    .collect(Collectors.toList());
+        }
 
         return (ArrayList<Task>) taskList.stream()
                 .filter(task -> task.description.contains(keyword))
                 .collect(Collectors.toList());
     }
+    //by datetime object
+    public static ArrayList<Task> filterList(ArrayList<Task> taskList, Date keyword) {
+        ArrayList<Task> filteredArray = new ArrayList<>();
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd");
+        DateTimeFormatter newPattern = DateTimeFormatter.ofPattern("MMM dd");
 
-    /**
-     * Shows to user all elements in stored task list.
-     */
+        String toCompare = formatter.format(keyword);
+        for (Task p : taskList) {
+            if (p instanceof Events) {
+                if (((Events) p).getEventTime()!= null) {
+                    if (((Events) p).getEventTime().format(newPattern).equals(toCompare)) {
+                        filteredArray.add(p);
+                    }
+                }
+            }
+            if (p instanceof Deadlines) {
+                if(((Deadlines) p).getDate()!= null) {
+                    if (((Deadlines) p).getDate().format(newPattern).equals(toCompare)) {
+                        filteredArray.add(p);
+                    }
+                }
+            }
+        }
+        Collections.sort(filteredArray);
+
+        return filteredArray;
+    }
+
+
+        /**
+         * Shows to user all elements in stored task list.
+         */
     public static void showStoredTaskList() throws NullPointerException {
         int taskCounter = 1;
         if (taskList.size() == 0) {

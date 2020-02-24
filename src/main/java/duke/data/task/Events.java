@@ -1,8 +1,12 @@
 package duke.data.task;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Events extends Task {
 
   protected String timeOfEvent;
+  protected LocalDateTime eventTime;
 
   /**
    * Represents an event object.
@@ -16,14 +20,33 @@ public class Events extends Task {
     this.timeOfEvent = timeOfEvent;
   }
 
+  public LocalDateTime getEventTime() {
+    return eventTime;
+  }
+
+  public Events(String description, LocalDateTime eventTime) {
+    super(description);
+    super.setTaskType("E");
+    super.setDate(eventTime);
+    this.eventTime = eventTime;
+
+  }
+
+
   public String getTimeOfEvent() {
     return timeOfEvent;
   }
 
   @Override
   public String toString() {
-    return "[" + super.getTaskType() + "]" + super.toString() + "(at: " + getTimeOfEvent()
-            + ")";
+    if (eventTime != null) {
+      DateTimeFormatter newPattern = DateTimeFormatter.ofPattern("MMM dd yyyy hh:mm a");
+      return "[" + super.getTaskType() + "]" + super.toString()
+              + " (at: " + getEventTime().format(newPattern) + ")";
+    } else {
+      return "[" + super.getTaskType() + "]" + super.toString() + " (at: " + getTimeOfEvent()
+              + ")";
+    }
   }
 
   @Override

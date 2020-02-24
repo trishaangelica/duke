@@ -7,6 +7,9 @@ done 4
 todo borrow book
 list
 deadline return book /by Sunday
-event project meeting /at Mon 2-4pm
 delete 3
 find book
+event project meeting /at 2020-03-02 1200
+deadline project CS3235 submission /by 2020-03-02 1200
+filter Mar 02
+bye

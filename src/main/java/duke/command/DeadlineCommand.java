@@ -2,8 +2,7 @@ package duke.command;
 
 import duke.data.TaskList;
 import duke.data.task.Deadlines;
-import java.time.LocalDateTime;
-
+import duke.ui.TextUi;
 import java.time.LocalDateTime;
 
 /**
@@ -13,10 +12,11 @@ import java.time.LocalDateTime;
 public class DeadlineCommand extends Command {
 
     public static final String COMMAND_WORD = "deadline";
-    public static final String MESSAGE_SUCCESS = "Got it. I've added this task: \n"
-            +"\t%s.\nNow you have %d tasks in your list.";
-    public static final String MESSAGE_PARAM = "\n|| Parameters: deadline [DESCRIPTION] /by [DUEDATE]\n";
-    public static final String MESSAGE_EXAMPLE ="|| Example: deadline submit essay /by 2019-10-15 1600\n";
+    public static final String MESSAGE_SUCCESS = TextUi.LS + "Got it. I've added this task: " +TextUi.LS
+            + "\t%s."+ TextUi.LS + "Now you have %d tasks in your list.";
+    public static final String MESSAGE_PARAM = TextUi.LS + "|| Parameters: deadline [DESCRIPTION] /by [DUEDATE]"
+            + TextUi.LS;
+    public static final String MESSAGE_EXAMPLE ="|| Example: deadline submit essay /by 2019-10-15 1600" + TextUi.LS;
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a simple deadline task to the list."
             + MESSAGE_PARAM + MESSAGE_EXAMPLE;
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the list.";

@@ -1,21 +1,32 @@
 package duke.data.task;
 
-public class Task {
+import java.time.LocalDateTime;
+
+public class Task implements Comparable<Task> {
 
   public String description;
   public boolean isDone;
   public String taskType;
-
-
+  public LocalDateTime date;
 
   /**
    * Represents a task object.
-   * @param description       description of task
+   *
+   * @param description description of task
    */
   public Task(String description) {
     this.description = description;
     this.isDone = false;
     this.taskType = null;
+    this.date = null;
+  }
+
+  public LocalDateTime getDate() {
+    return date;
+  }
+
+  public void setDate(LocalDateTime date) {
+    this.date = date;
   }
 
   public String getTaskType() {
@@ -38,19 +49,26 @@ public class Task {
     isDone = true;
   }
 
-  public String getStatusIcon() {
+  public String getStatus() {
     return (isDone ? "done" : "undone"); // return tick or X symbols
   }
 
   @Override
   public String toString() {
-    return "-[" + getStatusIcon() + "] " + description;
+    return "-[" + getStatus() + "] " + description;
   }
 
 
-  public  boolean isSameTask(Task toCheck){
+  public boolean isSameTask(Task toCheck) {
     return (toCheck == this)
             || (toCheck != null
             && toCheck.getDescription().equals(this.getDescription()));
+  }
+
+  @Override
+  public int compareTo(Task o) {
+    if (getDate() == null || o.getDate() == null)
+      return 0;
+    return getDate().compareTo(o.getDate());
   }
 }

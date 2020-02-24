@@ -2,6 +2,7 @@ package duke.command;
 
 import duke.data.TaskList;
 import duke.data.task.ToDos;
+import duke.ui.TextUi;
 
 import static duke.common.Messages.MESSAGE_ERROR;
 
@@ -11,11 +12,11 @@ import static duke.common.Messages.MESSAGE_ERROR;
  */
 public class TodoCommand extends Command {
     public static final String COMMAND_WORD = "todo";
-    public static final String MESSAGE_SUCCESS = "Got it. I've added this task: \n"
-            + "\t%s.\nNow you have %d tasks in your list.";
-    public static final String MESSAGE_PARAM = "\n|| Parameters: todo [DESCRIPTION]\n";
-    public static final String MESSAGE_EXAMPLE ="|| Example: todo brainstorm ideas\n";
-    public static final String MESSAGE_USAGE = "\n" + duke.ui.TextUi.DIVIDER + COMMAND_WORD
+    public static final String MESSAGE_SUCCESS =  TextUi.LS + "Got it. I've added this task: " +  TextUi.LS
+            + "\t%s. " +  TextUi.LS + "Now you have %d tasks in your list.";
+    public static final String MESSAGE_PARAM = TextUi.LS + "|| Parameters: todo [DESCRIPTION]"+ TextUi.LS;
+    public static final String MESSAGE_EXAMPLE ="|| Example: todo brainstorm ideas" + TextUi.LS;
+    public static final String MESSAGE_USAGE =  duke.ui.TextUi.DIVIDER +  TextUi.LS + COMMAND_WORD
             + ": Adds a simple to-do task to the list."
             + MESSAGE_PARAM + MESSAGE_EXAMPLE;
 
