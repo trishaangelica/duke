@@ -1,20 +1,21 @@
-# User Guide
+# User Guide for Jarvis
 
 ## Features 
 
-### Feature 1 
-Description of feature.
+### Feature 1. Add a task
 
 ## Usage
 
-### `Keyword` - Describe action
+### `todo` - Adds a todo task
 
-Describe action and its outcome.
+A todo type of task will be added to the current task list.
 
-Example of usage: 
+Format: `todo [description]`
 
-`keyword (optional arguments)`
+Example of usage:`todo read book`
+> - Adds a todo task described as "read book" to the list
+
 
 Expected outcome:
 
-`outcome`
+<img src ="images/todo_example.png" width= "250">
