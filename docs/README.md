@@ -10,7 +10,7 @@
     + [2.6. Filter list by category](#26-filter)
     + [2.7. Clear all tasks](#27-clear)
     + [2.8. Viewing Help](#28-help)
-- [3. Commad Summary](#3-command-summary)       
+- [3. Command Summary](#3-command-summary)       
      
     
     
