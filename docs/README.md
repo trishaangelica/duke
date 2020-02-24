@@ -26,7 +26,7 @@ Example of usage:`todo read book`
 
 Expected outcome:
 
-<img src ="images/todo_example.png" width = "350">
+<img src ="images/todo_example.png" width = "400">
 
 &nbsp;
 
@@ -54,14 +54,14 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/deadline_example.png" width= "350">
+<img src ="images/deadline_example.png" width= "400">
 
 Example of usage:
 `deadline return book /by June 6th`
 
 Expected outcome:
 
-<img src ="images/deadline_example1.png" width="350">
+<img src ="images/deadline_example1.png" width="400">
 
 &nbsp;
 
@@ -89,14 +89,14 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/event_example.png" width ="350">
+<img src = "images/event_example.png" width ="400">
 
 Example of usage:
 `event party /at Julia's house tmr`
 
 Expected outcome:
 
-<img src = "images/event_example1.png" width = "350">
+<img src = "images/event_example1.png" width = "400">
 
 &nbsp;
 
@@ -118,7 +118,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src= "images/done_example.png" width = "350">
+<img src= "images/done_example.png" width = "400">
 
 &nbsp;
 
@@ -135,7 +135,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/list_example.png" width = "350">
+<img src = "images/list_example.png" width = "400">
 
 &nbsp;
 
@@ -155,7 +155,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/find_example.png" width = "350">
+<img src = "images/find_example.png" width = "400">
 
 &nbsp;
 
@@ -177,7 +177,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/delete_example.png" width "350">
+<img src = "images/delete_example.png" width "400">
 
 &nbsp;
 
@@ -210,7 +210,7 @@ Example of usage:`filter deadline`
 
 Expected outcome:
 
-<img src = "images/filter_deadline_example.PNG" width = "350">
+<img src = "images/filter_deadline_example.PNG" width = "400">
 
 
 Example of usage:`filter event`
@@ -219,7 +219,7 @@ Example of usage:`filter event`
 
 Expected outcome:
 
-<img src = "images/filter_event_example.PNG" width = "350">
+<img src = "images/filter_event_example.PNG" width = "400">
 
 Example of usage:`filter DATE`
 > - Displays all deadlines/events occurring on a specific date. 
@@ -243,7 +243,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/clear_example.PNG" width =  "350">
+<img src = "images/clear_example.PNG" width =  "400">
 
 &nbsp;
 
@@ -282,7 +282,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/bye.png" width = "350">
+<img src = "images/bye.png" width = "400">
 
 &nbsp;
 
