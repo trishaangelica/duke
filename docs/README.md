@@ -1,41 +1,23 @@
-== Jarvis - User Guide
-:site-section: UserGuide
-:toc:
-:toc-title:
-:toc-placement: preamble
-:sectnums:
-:imagesDir: images
-:stylesDir: stylesheets
-:xrefstyle: full
-:experimental:
-ifdef::env-github[]
-:tip-caption: :bulb:
-:note-caption: :information_source:
-endif::[]
-:repoURL: https://github.com/se-edu/addressbook-level3
+## Jarvis - User Guide
 
-By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
-[Go to Real Cool Heading section](Introduction)
+# 
 
-
-= 
-
-Introduction
+1. Introduction
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
-== 
+## 
 2. Features 
 *Command Format*
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `todo [DESCRIPTION]`, `DESCRIPTION` is a parameter which can be used as `todo grab breakfast`.
 
 &nbsp;
 
-=== 2.1 Add a task
+### 2.1 Add a task
 With Jarvis, you can add 3 different types of tasks: todo, deadline and event.
 
 
-==== `todo` - Adds a todo task
+#### `todo` - Adds a todo task
 
 A todo type of task will be added to the current task list.
 
@@ -47,11 +29,11 @@ Example of usage:`todo read book`
 
 Expected outcome:
 
-<img src ="images/todo_example.png" width= "250">
+<img src ="images/todo_example.png" width = "250">
 
 &nbsp;
 
-==== `deadline` - Adds a deadline task
+#### `deadline` - Adds a deadline task
 
 A deadline type of task will be added to the current task list.
 
@@ -75,18 +57,18 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/deadline_example.png" width= "400">
+<img src ="images/deadline_example.png" width= "250">
 
 Example of usage:
 `deadline return book /by June 6th`
 
 Expected outcome:
 
-<img src ="images/deadline_example1.png" width= "400">
+<img src ="images/deadline_example1.png" width="250">
 
 &nbsp;
 
-==== `event` - Adds a event task
+#### `event` - Adds a event task
 
 An event type of task will be added to the current task list.
 
@@ -110,19 +92,19 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/event_example.png" width= "400">
+<img src = "images/event_example.png" width ="250">
 
 Example of usage:
 `event party /at Julia's house tmr`
 
 Expected outcome:
 
-<img src ="images/event_example1.png" width= "400">
+<img src = "images/event_example1.png" width = "250">
 
 &nbsp;
 
-=== 2.2 Mark task as done
-==== `done` - Mark done
+### 2.2 Mark task as done
+#### `done` - Mark done
 Marks specified task as done.
 
 Format:
@@ -132,20 +114,20 @@ Format:
 
 >- The index refers to the index number shown in the displayed task list.
 
->- The index **must** be a positive integer 1, 2, 3, …​
+>- The index **must** be a positive integer 1, 2, 3, …
 
 Example of usage:
 `done 1`
 
 Expected outcome:
 
-<img src ="images/done_example.png" width= "400">
+<img src= "images/done_example.png" width = "250">
 
 &nbsp;
 
 
-=== 2.3 List
-==== `list` - Displays all tasks in list
+### 2.3 List
+#### `list` - Displays all tasks in list
 
 Format:
  `list`
@@ -156,12 +138,12 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/list_example.png" width= "400">
+<img src = "images/list_example.png" width = "250">
 
 &nbsp;
 
-=== 2.4 Find 
-==== `find` - Find tasks that match keyword
+### 2.4 Find 
+#### `find` - Find tasks that match keyword
 Find all tasks that match the given keyword
 
 Format:
@@ -176,12 +158,12 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/find_example.png" width= "400">
+<img src = "images/find_example.png" width = "250">
 
 &nbsp;
 
-=== 2.5 Delete
-==== `delete` - Deletes task from list
+### 2.5 Delete
+#### `delete` - Deletes task from list
 Deletes specified task from list.
 
 Format:
@@ -198,15 +180,15 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/delete_example.png" width= "400">
+<img src = "images/delete_example.png" width "250">
 
 &nbsp;
 
-=== 2.6 Filter
+### 2.6 Filter
 Allows you to filter your task list by 3 different categories: task type, done status and date.
 
 
-==== `filter` - Filters list according to category
+#### `filter` - Filters list according to category
 
 The task list is filtered according to the given category.
 
@@ -222,7 +204,7 @@ Example of usage:`filter todo`
 
 Expected outcome:
 
-<img src ="images/filter_todo_example.PNG" width= "400">
+<img src #"images/filter_todo_example.PNG" width# "400">
 
 
 Example of usage:`filter deadline`
@@ -231,7 +213,7 @@ Example of usage:`filter deadline`
 
 Expected outcome:
 
-<img src ="images/filter_deadline_example.PNG" width= "400">
+<img src = "images/filter_deadline_example.PNG" width = "250">
 
 
 Example of usage:`filter event`
@@ -240,7 +222,7 @@ Example of usage:`filter event`
 
 Expected outcome:
 
-<img src ="images/filter_event_example.PNG" width= "400">
+<img src = "images/filter_event_example.PNG" width = "250">
 
 Example of usage:`filter DATE`
 > - Displays all deadlines/events occurring on a specific date. 
@@ -251,8 +233,8 @@ Example of usage:`filter DATE`
 &nbsp;
 
 
-=== 2.7 Clear
-==== `clear` - Clear all tasks in list
+### 2.7 Clear
+#### `clear` - Clear all tasks in list
 Clears and deletes **all** task in list
 
 Format:
@@ -264,13 +246,13 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/clear_example.PNG" width= "400">
+<img src = "images/clear_example.PNG" width =  "250">
 
 &nbsp;
 
 
-=== 2.8 Help
-==== `help` - Displays a help list
+### 2.8 Help
+#### `help` - Displays a help list
 The help list contains information about all accepted commands.
 
 It will be displayed if the input command is invalid.
@@ -284,13 +266,13 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/help.PNG" width= "400">
+<img src #"images/help.PNG" width# "400">
 
 &nbsp;
 
 
-=== 2.9 Exit Program
-==== `bye` - Exits the program
+### 2.9 Exit Program
+#### `bye` - Exits the program
 Saves task list to a local storage file in the computer and exits program.
 
 
@@ -303,11 +285,11 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/bye.png" width= "400">
+<img src = "images/bye.png" width = "250">
 
 &nbsp;
 
-== 3. Features 
+## 3. Features 
 
 * *Todo* : `todo DESCRIPTION` \
 e.g. `todo read book`
