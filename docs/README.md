@@ -1,6 +1,6 @@
 # Jarvis - User Guide
 
-* [1. Introduction](README.md-introduction)
+* [1. Introduction](#-1-introduction)
 * [2. Features](README.md-features)
     + [2.1. Adding a task](2-1-add-a-task)
     + [2.2. Marking a task done](2-2-mark-task-as-done)
