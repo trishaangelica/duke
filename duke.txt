@@ -1,0 +1,5 @@
+T | 0 | read book
+D | 0 | project submission | Mar 02 2020 12:00 PM
+D | 0 | return book | June 6th
+E | 0 | project meeting | Mar 02 2020 12:00 PM
+E | 0 | party | Julia's house tmr
