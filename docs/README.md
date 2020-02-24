@@ -1,7 +1,7 @@
 # Jarvis - User Guide
 
-* [1. Introduction](introduction)
-* [2. Features](2-features)
+* [1. Introduction](README.md-introduction)
+* [2. Features](README.md-features)
     + [2.1. Adding a task](2-1-add-a-task)
     + [2.2. Marking a task done](2-2-mark-task-as-done)
     + [2.3. Listing all tasks](2-3-list)
@@ -16,11 +16,11 @@
     
     
 
-## <a name="introduction"> 1. Introduction</h2>
+## <a name="introduction"> 1. Introduction</a>
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
-<h2 a name="features"> 2. Features </a>
+## <a name="features"> 2. Features </a>
 
 *Command Format*
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `todo [DESCRIPTION]`, `DESCRIPTION` is a parameter which can be used as `todo grab breakfast`.
