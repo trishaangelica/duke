@@ -1,4 +1,4 @@
-= Jarvis - User Guide
+== Jarvis - User Guide
 :site-section: UserGuide
 :toc:
 :toc-title:
@@ -12,27 +12,28 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :note-caption: :information_source:
 endif::[]
-:repoURL: https://github.com/trishaangelica/duke
+:repoURL: https://github.com/se-edu/addressbook-level3
+
+By: `Team SE-EDU`      Since: `Jun 2016`      Licence: `MIT`
+[Go to Real Cool Heading section](Introduction)
 
 
-== Introduction
+= 
+
+Introduction
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
-
-
-
-[[Features]]
-== Features
-
-====
+== 
+2. Features 
 *Command Format*
-
 * Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `todo [DESCRIPTION]`, `DESCRIPTION` is a parameter which can be used as `todo grab breakfast`.
-====
 
-=== Add a task
+&nbsp;
+
+=== 2.1 Add a task
 With Jarvis, you can add 3 different types of tasks: todo, deadline and event.
+
 
 ==== `todo` - Adds a todo task
 
@@ -46,7 +47,7 @@ Example of usage:`todo read book`
 
 Expected outcome:
 
-image::todo_example.png[width = "100""]
+<img src ="images/todo_example.png" width= "250">
 
 &nbsp;
 
@@ -62,11 +63,11 @@ Format:
 > - **/by** signals start of `[DUE DATE & TIME]`
 
 > - Accepted `[DUE DATE & TIME]` format:
->  - Year-Month-Day -- 24HR Time 
->     - e.g. **2020-03-02 1800** 
+>  + Year-Month-Day -- 24HR Time 
+>     + e.g. **2020-03-02 1800** 
 >   
->  - Any String value
->     - e.g. **June 6th** 
+>  + Any String value
+>     + e.g. **June 6th** 
 
 Example of usage:
 `deadline project submission /by 2020-03-02 1200`
@@ -74,14 +75,14 @@ Example of usage:
 
 Expected outcome:
 
-image::deadline_example.png[width = "300"]
+<img src ="images/deadline_example.png" width= "400">
 
 Example of usage:
 `deadline return book /by June 6th`
 
 Expected outcome:
 
-image::deadline_example1.png[width = "300"]
+<img src ="images/deadline_example1.png" width= "400">
 
 &nbsp;
 
@@ -109,14 +110,14 @@ Example of usage:
 
 Expected outcome:
 
-image::event_example.png[width = "300"]
+<img src ="images/event_example.png" width= "400">
 
 Example of usage:
 `event party /at Julia's house tmr`
 
 Expected outcome:
 
-image::event_example1.png[width = "300"]
+<img src ="images/event_example1.png" width= "400">
 
 &nbsp;
 
@@ -138,7 +139,7 @@ Example of usage:
 
 Expected outcome:
 
-image::done_example.png[width = "250"]
+<img src ="images/done_example.png" width= "400">
 
 &nbsp;
 
@@ -155,7 +156,7 @@ Example of usage:
 
 Expected outcome:
 
-image::list_example.png[width = "250"]
+<img src ="images/list_example.png" width= "400">
 
 &nbsp;
 
@@ -175,7 +176,7 @@ Example of usage:
 
 Expected outcome:
 
-image::find_example.png[width = "250"]
+<img src ="images/find_example.png" width= "400">
 
 &nbsp;
 
@@ -197,7 +198,7 @@ Example of usage:
 
 Expected outcome:
 
-image::delete_example.png[width = "250"]
+<img src ="images/delete_example.png" width= "400">
 
 &nbsp;
 
@@ -221,7 +222,7 @@ Example of usage:`filter todo`
 
 Expected outcome:
 
-image::filter_todo_example.PNG[width = "250"]
+<img src ="images/filter_todo_example.PNG" width= "400">
 
 
 Example of usage:`filter deadline`
@@ -230,7 +231,7 @@ Example of usage:`filter deadline`
 
 Expected outcome:
 
-image::filter_deadline_example.PNG[width = "250"]
+<img src ="images/filter_deadline_example.PNG" width= "400">
 
 
 Example of usage:`filter event`
@@ -239,7 +240,7 @@ Example of usage:`filter event`
 
 Expected outcome:
 
-image::filter_event_example.PNG[width = "250"]
+<img src ="images/filter_event_example.PNG" width= "400">
 
 Example of usage:`filter DATE`
 > - Displays all deadlines/events occurring on a specific date. 
@@ -262,7 +263,8 @@ Example of usage:
 `clear`
 
 Expected outcome:
-image::clear_example.PNG[width = "250"]
+
+<img src ="images/clear_example.PNG" width= "400">
 
 &nbsp;
 
@@ -282,7 +284,7 @@ Example of usage:
 
 Expected outcome:
 
-image::help.PNG[width = "250"]
+<img src ="images/help.PNG" width= "400">
 
 &nbsp;
 
@@ -301,7 +303,7 @@ Example of usage:
 
 Expected outcome:
 
-image::bye.png[width = "250"]
+<img src ="images/bye.png" width= "400">
 
 &nbsp;
 
@@ -335,3 +337,5 @@ e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter
 * *Help* : `help`
 
 * *Exit* : `bye`
+
+
