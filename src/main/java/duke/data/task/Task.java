@@ -15,7 +15,7 @@ public class Task implements Comparable<Task> {
    * @param description description of task
    */
   public Task(String description) {
-    this.description = description;
+    this.description = description.trim();
     this.isDone = false;
     this.taskType = null;
     this.date = null;

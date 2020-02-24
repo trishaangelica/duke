@@ -15,6 +15,8 @@ public class ToDos extends Task {
 
     @Override
     public boolean isSameTask(Task toCheck) {
-        return super.isSameTask(toCheck);
+        return (toCheck == this)
+                || (toCheck != null
+                && toCheck.getDescription().equals(this.getDescription()));
     }
 }

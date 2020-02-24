@@ -52,10 +52,13 @@ public class Deadlines extends Task {
 
     @Override
     public boolean isSameTask(Task toCheck) {
-        return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
-                && ((Deadlines) toCheck).getDueDate().equals(this.getDueDate()));
+        if (date != null) {
+            return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
+                    && toCheck.getDate().equals(this.getDate()));
+        } else {
+            return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
+                    && ((Deadlines)toCheck).getDueDate().equals(this.getDueDate()));
+        }
     }
-
-
 }
 

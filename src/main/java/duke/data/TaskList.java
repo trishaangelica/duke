@@ -46,11 +46,11 @@ public class TaskList {
     public static boolean contains(Task toCheck) {
         for (Task p : taskList) {
             if (p instanceof ToDos && toCheck instanceof ToDos) {
-                return (((ToDos) p).isSameTask(toCheck));
+                return p.isSameTask(toCheck);
             } else if (p instanceof Events && toCheck instanceof Events) {
-                return (((Events) p).isSameTask(toCheck));
+                return (p.isSameTask(toCheck));
             } else if (p instanceof Deadlines && toCheck instanceof Deadlines) {
-                return (((Deadlines) p).isSameTask(toCheck));
+                return p.isSameTask(toCheck);
             }
         }
         return false;
@@ -64,8 +64,9 @@ public class TaskList {
     public static void add(Task toAdd) throws DuplicateTaskException {
         if (contains(toAdd)) {
             throw new DuplicateTaskException();
+        }else {
+            taskList.add(toAdd);
         }
-        taskList.add(toAdd);
     }
 
     public static Task retrieve(int targetIndex) {
@@ -141,8 +142,8 @@ public class TaskList {
                 }
             }
             if (p instanceof Deadlines) {
-                if(((Deadlines) p).getDate()!= null) {
-                    if (((Deadlines) p).getDate().format(newPattern).equals(toCompare)) {
+                if(p.getDate()!= null) {
+                    if (p.getDate().format(newPattern).equals(toCompare)) {
                         filteredArray.add(p);
                     }
                 }

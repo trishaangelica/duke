@@ -13,13 +13,14 @@ import static duke.data.TaskList.filterList;
 
 public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
-    public static final String EMPTY_LIST_MESSAGE = TextUi.LS + "|| OOPS! No task in the list fits that category.TextUi.LS"
-            + "|| Accepted category words are: [todo, event, deadline, done, undone, [MMM-dd]]" + TextUi.LS;
+    public static final String EMPTY_LIST_MESSAGE = TextUi.LS + "|| OOPS! No task in the list fits that category."
+            + TextUi.LS + "|| Accepted category words are: [todo, event, deadline, done, undone, [MMM-dd]]"
+            + TextUi.LS;
     public static final String MESSAGE_PARAM = "|| Parameters: " + COMMAND_WORD + " [CATEGORY]" + TextUi.LS;
     public static final String MESSAGE_EXAMPLE = "|| Example 1: " + COMMAND_WORD
-            + " event" + TextUi.LS +"|| Example 2: " + COMMAND_WORD + " Mar 02";
+            + " event" + TextUi.LS + "|| Example 2: " + COMMAND_WORD + " Mar 02";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays tasks that fits category."+ TextUi.LS
+            + ": Displays tasks that fits category." + TextUi.LS
             + MESSAGE_PARAM + MESSAGE_EXAMPLE + TextUi.LS;
     String filterParam;
     String keyword; //keep original keyword
@@ -51,23 +52,25 @@ public class FilterCommand extends Command {
     public CommandResult execute() {
         ArrayList<Task> copiedList = TaskList.copy();
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM");
-        String showDate = formatter.format(date);
-
         try {
             ArrayList<Task> filteredList = filterList(copiedList, date);
-
+            String showDate = formatter.format(date);
             System.out.println(TextUi.LS + TextUi.DIVIDER + TextUi.LS + "Here are the tasks you have on ["
-                    + showDate + "]"+ TextUi.LS);
+                    + showDate + "]" + TextUi.LS);
             TaskList.showTaskList(filteredList);
             return new CommandResult(String.format(getMessageForTaskListShownSummary(filteredList), filteredList));
-        } catch (DateTimeParseException dpe) {
-            ArrayList<Task> filteredList = filterList(copiedList, filterParam);
-            System.out.println(TextUi.LS + TextUi.DIVIDER + TextUi.LS + "Here are the ["
-                            + keyword + "] tasks in your list." + TextUi.LS);
-            TaskList.showTaskList(filteredList);
-            return new CommandResult(String.format(getMessageForTaskListShownSummary(filteredList), filteredList));
-        } catch (NullPointerException e) {
-            return new CommandResult(String.format(EMPTY_LIST_MESSAGE) + MESSAGE_PARAM + MESSAGE_EXAMPLE);
+        } catch (NullPointerException e) { //exception for Date means it doesn't exist at this point so try parse string
+            try {
+                ArrayList<Task> filteredList = filterList(copiedList, filterParam);
+                System.out.println(TextUi.LS + TextUi.DIVIDER + TextUi.LS + "Here are the ["
+                        + keyword + "] tasks in your list." + TextUi.LS);
+                TaskList.showTaskList(filteredList);
+                return new CommandResult(String.format(getMessageForTaskListShownSummary(filteredList), filteredList));
+            } catch (NullPointerException npe) { //exception for string, it doesn't exist too so print error message
+                return new CommandResult(String.format(EMPTY_LIST_MESSAGE)
+                        + MESSAGE_PARAM + MESSAGE_EXAMPLE);
+
+            }
         }
     }
 }

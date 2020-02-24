@@ -38,7 +38,7 @@ public class DeadlineCommand extends Command {
         if (desc.isEmpty()||date.toString().isEmpty()){
             throw new StringIndexOutOfBoundsException();
         }
-        this.toAdd = new Deadlines(desc,date);
+        this.toAdd = new Deadlines(desc.trim(),date);
     }
 
     @Override

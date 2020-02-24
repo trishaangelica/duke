@@ -15,7 +15,7 @@ public class Events extends Task {
    * @param timeOfEvent time of event
    */
   public Events(String description, String timeOfEvent) {
-    super(description);
+    super(description.trim());
     super.setTaskType("E");
     this.timeOfEvent = timeOfEvent;
   }
@@ -51,6 +51,10 @@ public class Events extends Task {
 
   @Override
   public boolean isSameTask(Task toCheck) {
+    if(eventTime!=null){
+      return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
+              && ((Events) toCheck).getEventTime().equals(this.getEventTime()));
+    }
       return (toCheck == this) || (toCheck != null && toCheck.getDescription().equals(this.getDescription())
       && ((Events) toCheck).getTimeOfEvent().equals(this.getTimeOfEvent()));
   }
