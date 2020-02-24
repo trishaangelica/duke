@@ -1,12 +1,19 @@
 # User Guide for Jarvis
+## Introduction
 
-## Features 
+Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
-### Feature 1. Add a task
+## 1. Features 
+*Command Format*
+* Words in `UPPER_CASE` are the parameters to be supplied by the user e.g. in `todo [DESCRIPTION]`, `DESCRIPTION` is a parameter which can be used as `todo grab breakfast`.
 
-## Usage
+&nbsp;
 
-### `todo` - Adds a todo task
+### 1.1 Add a task
+With Jarvis, you can add 3 different types of tasks: todo, deadline and event.
+
+
+#### `todo` - Adds a todo task
 
 A todo type of task will be added to the current task list.
 
@@ -22,7 +29,7 @@ Expected outcome:
 
 &nbsp;
 
-### `deadline` - Adds a deadline task
+#### `deadline` - Adds a deadline task
 
 A deadline type of task will be added to the current task list.
 
@@ -46,18 +53,18 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/deadline_example.png" width= "350">
+<img src ="images/deadline_example.png" width= "400">
 
 Example of usage:
 `deadline return book /by June 6th`
 
 Expected outcome:
 
-<img src ="images/deadline_example1.png" width= "350">
+<img src ="images/deadline_example1.png" width= "400">
 
 &nbsp;
 
-### `event` - Adds a event task
+#### `event` - Adds a event task
 
 An event type of task will be added to the current task list.
 
@@ -81,11 +88,234 @@ Example of usage:
 
 Expected outcome:
 
-<img src ="images/event_example.png" width= "350">
+<img src ="images/event_example.png" width= "400">
 
 Example of usage:
 `event party /at Julia's house tmr`
 
 Expected outcome:
 
-<img src ="images/event_example1.png" width= "350">
+<img src ="images/event_example1.png" width= "400">
+
+&nbsp;
+
+### 1.2 Mark task as done
+#### `done` - Mark done
+Marks specified task as done.
+
+Format:
+ `done [INDEX]`
+
+> - Deletes the item at the specified index.
+
+>- The index refers to the index number shown in the displayed task list.
+
+>- The index **must** be a positive integer 1, 2, 3, …​
+
+Example of usage:
+`done 1`
+
+Expected outcome:
+
+<img src ="images/done_example.png" width= "400">
+
+&nbsp;
+
+
+### 1.3 List
+#### `list` - Displays all tasks in list
+
+Format:
+ `list`
+
+
+Example of usage:
+`list`
+
+Expected outcome:
+
+<img src ="images/list_example.png" width= "400">
+
+&nbsp;
+
+### 1.4 Find 
+#### `find` - Find tasks that match keyword
+Find all tasks that match the given keyword
+
+Format:
+ `find [KEYWORD]`
+
+> - `[KEYWORD]` is matched with task `description`.
+> - Tasks with descriptions that have the `[KEYWORD]` are displayed. 
+
+
+Example of usage:
+`find book`
+
+Expected outcome:
+
+<img src ="images/find_example.png" width= "400">
+
+&nbsp;
+
+### 1.5 Delete
+#### `delete` - Deletes task from list
+Deletes specified task from list.
+
+Format:
+ `delete [INDEX]`
+
+> - Deletes the item at the specified index.
+
+>- The index refers to the index number shown in the displayed task list.
+
+>- The index **must** be a positive integer 1, 2, 3, …​
+
+Example of usage:
+`delete 1`
+
+Expected outcome:
+
+<img src ="images/delete_example.png" width= "400">
+
+&nbsp;
+
+### 1.6 Filter
+Allows you to filter your task list by 3 different categories: task type, done status and date.
+
+
+#### `filter` - Filters list according to category
+
+The task list is filtered according to the given category.
+
+Format: `filter [category]`
+> - Accepted values for categories include: `"todo"`,`"event"`,`"deadline"`,`DATE`
+>   - `DATE` **must** follow format: Month-Date
+>     - e.g. Mar 02
+
+
+Example of usage:`filter todo`
+> - Displays all todo tasks in list
+
+
+Expected outcome:
+
+<img src ="images/filter_todo_example.PNG" width= "400">
+
+
+Example of usage:`filter deadline`
+> - Displays all deadline tasks in list
+
+
+Expected outcome:
+
+<img src ="images/filter_deadline_example.PNG" width= "400">
+
+
+Example of usage:`filter event`
+> - Displays all event tasks in list
+
+
+Expected outcome:
+
+<img src ="images/filter_event_example.PNG" width= "400">
+
+Example of usage:`filter DATE`
+> - Displays all deadlines/events occurring on a specific date. 
+
+| :bulb: | Jarvis is smart enough to list events/ deadlines occurring on the same day in chronological order! |
+| ------------- | ------------- |
+
+&nbsp;
+
+
+### 1.7 Clear
+#### `clear` - Clear all tasks in list
+Clears and deletes **all** task in list
+
+Format:
+ `clear`
+
+
+Example of usage:
+`clear`
+
+Expected outcome:
+
+<img src ="images/clear_example.PNG" width= "400">
+
+&nbsp;
+
+
+### 1.8 Help
+#### `help` - Displays a help list
+The help list contains information about all accepted commands.
+
+It will be displayed if the input command is invalid.
+
+Format:
+ `help`
+
+
+Example of usage:
+`help`
+
+Expected outcome:
+
+<img src ="images/help.PNG" width= "400">
+
+&nbsp;
+
+
+### 1.9 Exit Program
+#### `bye` - Exits the program
+Saves task list to a local storage file in the computer and exits program.
+
+
+Format:
+ `bye`
+
+
+Example of usage:
+`bye`
+
+Expected outcome:
+
+<img src ="images/bye.png" width= "400">
+
+&nbsp;
+
+##
+2. Command Summary
+
+* *Todo* : `todo DESCRIPTION` \
+e.g. `todo read book`
+
+* *Deadline* : `deadline DESCRIPTION /by [DUE DATE & TIME]` \
+e.g. `deadline project submission /by 2020-03-02 1200`   **OR**   `deadline return book /by June 6th`
+
+* *Event* : `event DESCRIPTION /by [EVENT TIME & VENUE]` \
+e.g. `event project meeting /at 2020-03-02 1200` **OR** `event party /at Julia's house tmr`
+
+* *Mark* : `done [INDEX]` \
+e.g. `done 1`
+
+* *List* : `list` 
+
+* *Find* : `find KEYWORD` \
+e.g. `find book`
+
+* *Delete* : `delete [INDEX]` 
+e.g. `delete 3`
+
+* *Filter* : `filter [CATEGORY]` \
+e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter Mar 02`
+
+* *Clear* : `clear`
+
+* *Help* : `help`
+
+
+* *Exit* : `bye`
+
+
