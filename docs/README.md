@@ -1,7 +1,7 @@
 # :calendar:  Jarvis Task Manager - User Guide 
 
-* [1. Introduction](#-1-introduction)
-* [2. Features](#-2-features)
+* [1. Introduction](#1-introduction)
+* [2. Features](#2-features)
     + [2.1. Adding a task](#21-add-a-task)
     + [2.2. Marking a task done](#22-mark-task-as-done)
     + [2.3. Listing all tasks](#23-list)
