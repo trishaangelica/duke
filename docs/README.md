@@ -1,7 +1,7 @@
 # Jarvis - User Guide
 
 * [1. Introduction](#-1-introduction)
-* [2. Features](README.md-features)
+* [2. Features](#-2-features)
     + [2.1. Adding a task](2-1-add-a-task)
     + [2.2. Marking a task done](2-2-mark-task-as-done)
     + [2.3. Listing all tasks](2-3-list)
@@ -16,7 +16,7 @@
     
     
 
-## 1. Introduction
+## <a name = "introduction">1. Introduction <\a>
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
