@@ -2,21 +2,21 @@
 
 * [1. Introduction](#-1-introduction)
 * [2. Features](#-2-features)
-    + [2.1. Adding a task](2-1-add-a-task)
-    + [2.2. Marking a task done](2-2-mark-task-as-done)
-    + [2.3. Listing all tasks](2-3-list)
-    + [2.4. Find task by keyword](2-4-find)
-    + [2.5. Delete a task](2-5-delete)
-    + [2.6. Filter list by category](2-6-filter)
-    + [2.7. Clear all tasks](2-7-clear)
-    + [2.8. Viewing Help](2-8-help)
+    + [2.1. Adding a task](#21-add-a-task)
+    + [2.2. Marking a task done](#22-mark-task-as-done)
+    + [2.3. Listing all tasks](#23-list)
+    + [2.4. Find task by keyword](#24-find)
+    + [2.5. Delete a task](#25-delete)
+    + [2.6. Filter list by category](#26-filter)
+    + [2.7. Clear all tasks](#27-clear)
+    + [2.8. Viewing Help](#28-help)
   
 - [3. Commad Summary](2-command-summary")       
      
     
     
 
-## <a name = "introduction">1. Introduction <\a>
+## <a name = "introduction">1. Introduction </a>
 
 Jarvis is for those who *prefer to use a desktop app for managing their tasks*. More importantly, Jarvis is *strictly optimized for those who prefer to work with a Command Line Interface* (CLI). So, if you can type fast, you can rely on Jarvis to get your task management done much quicker than many other traditional apps out there. Enjoy! 
 
