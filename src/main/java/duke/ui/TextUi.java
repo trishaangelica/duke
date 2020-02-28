@@ -1,4 +1,5 @@
 package duke.ui;
+
 import duke.command.CommandResult;
 import duke.data.TaskList;
 import java.io.InputStream;

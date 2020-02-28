@@ -2,6 +2,7 @@ package duke.command;
 
 import duke.data.TaskList;
 import duke.data.task.ToDos;
+import duke.storage.StorageFile;
 import duke.ui.TextUi;
 
 import static duke.common.Messages.MESSAGE_ERROR;
@@ -21,9 +22,12 @@ public class TodoCommand extends Command {
             + MESSAGE_PARAM + MESSAGE_EXAMPLE;
 
     public static final String MESSAGE_DUPLICATE_TASK = "This task already exists in the list.";
+    public static final String MESSAGE_SAVE_ERROR = "Error saving task to storage file";
 
 
     private ToDos toAdd;
+    public StorageFile storage;
+
 
     public TodoCommand(ToDos toAdd) {
         this.toAdd = toAdd;

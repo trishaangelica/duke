@@ -59,7 +59,7 @@ public class FilterCommand extends Command {
                     + showDate + "]" + TextUi.LS);
             TaskList.showTaskList(filteredList);
             return new CommandResult(String.format(getMessageForTaskListShownSummary(filteredList), filteredList));
-        } catch (NullPointerException e) { //exception for Date means it doesn't exist at this point so try parse string
+        } catch (NullPointerException e) { //exception for Date means it doesn't exist at this point, parse String instead
             try {
                 ArrayList<Task> filteredList = filterList(copiedList, filterParam);
                 System.out.println(TextUi.LS + TextUi.DIVIDER + TextUi.LS + "Here are the ["

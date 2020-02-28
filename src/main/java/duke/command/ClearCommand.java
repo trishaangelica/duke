@@ -3,7 +3,6 @@ import duke.storage.StorageFile;
 import duke.ui.TextUi;
 
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.PrintWriter;
 
 import static duke.data.TaskList.clear;

@@ -155,7 +155,7 @@ public class Parser {
             return new FilterCommand(date); //Example: 0ct 15
 
         } catch (ParseException e) {
-            return new FilterCommand(arguments); //filter keyword as string        }
+            return new FilterCommand(arguments); //filter keyword as string
         }
     }
 }
