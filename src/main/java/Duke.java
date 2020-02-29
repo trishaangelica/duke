@@ -32,7 +32,6 @@ public class Duke {
             ui.showWelcomeMessage(storage.getPath());
             ui.showLoadedList();
 
-
         } catch (StorageFile.StorageOperationException | StorageFilePathException e) {
             ui.showInitFailedMessage();
             throw new RuntimeException(e);
@@ -50,9 +49,18 @@ public class Duke {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
+            saveListToStorageFile(taskList);
             ui.showResultToUser(result);
 
         } while (!ExitCommand.isExit(command));
+    }
+
+    private void saveListToStorageFile(TaskList taskList){
+        try{
+            storage.save(taskList);
+        }catch (StorageFile.StorageOperationException e){
+            System.out.println("Error saving data to storage file..");
+        }
     }
 
 
@@ -65,7 +73,6 @@ public class Duke {
     private CommandResult executeCommand(Command command) {
         try {
             command.setData(taskList);
-            storage.save(taskList);
             return command.execute();
         } catch (Exception e) {
             ui.showToUser(e.getMessage());

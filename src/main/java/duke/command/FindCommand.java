@@ -14,9 +14,9 @@ import static duke.data.TaskList.filterList;
  */
 public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
-    public static final String EMPTY_LIST_MESSAGE = "|| OOPS! There is no such task in your list.";
-    public static final String MESSAGE_PARAM = "\n|| Parameters: " + COMMAND_WORD + " [KEYWORD]\n";
-    public static final String MESSAGE_EXAMPLE = "|| Example: " + COMMAND_WORD + " book\n";
+    public static final String EMPTY_LIST_MESSAGE = "|| OOPS! There is no such task in the list.";
+    public static final String MESSAGE_PARAM = TextUi.LS + "|| Parameters: " + COMMAND_WORD + " [KEYWORD]" + TextUi.LS;
+    public static final String MESSAGE_EXAMPLE = "|| Example: " + COMMAND_WORD + " book" + TextUi.LS;
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Find tasks stored in the list by keyword."
             + MESSAGE_PARAM + MESSAGE_EXAMPLE;
@@ -32,7 +32,8 @@ public class FindCommand extends Command {
         try {
             ArrayList<Task> copiedList = TaskList.copy();
             ArrayList<Task> filteredList = filterList(copiedList, keyword);
-            System.out.println("\n" + TextUi.DIVIDER + "\nHere are the matching tasks in your list:\n");
+            System.out.println(TextUi.LS + TextUi.DIVIDER + TextUi.LS +"Here are the matching tasks in your list:"
+                    + TextUi.LS);
             TaskList.showTaskList(filteredList);
             return new CommandResult(String.format(getMessageForTaskListShownSummary(filteredList),filteredList));
         } catch (NullPointerException e) {

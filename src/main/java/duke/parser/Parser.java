@@ -2,9 +2,12 @@ package duke.parser;
 
 import duke.command.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,6 +58,9 @@ public class Parser {
         case FindCommand.COMMAND_WORD:
             return new FindCommand(arguments);
 
+        case FilterCommand.COMMAND_WORD:
+            return prepareFilter(arguments);
+
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
 
@@ -70,20 +76,27 @@ public class Parser {
             return new TodoCommand(arguments);
         } catch (NullPointerException npe) {
             return new IncorrectCommand(System.lineSeparator()
-                    + String.format(MESSAGE_ERROR, "description", TodoCommand.COMMAND_WORD));
+                    + String.format(MESSAGE_ERROR, "description", TodoCommand.COMMAND_WORD)
+                    + TodoCommand.MESSAGE_PARAM + TodoCommand.MESSAGE_EXAMPLE);
         }
     }
 
     private Command prepareEvent(String arguments) {
-       try {
-           final int indexOfAtPrefix = arguments.indexOf("/at");
-
-           String description = arguments.substring(0, indexOfAtPrefix);
-           String timeOfEvent = arguments.substring(indexOfAtPrefix + 3).trim();
-           return new EventCommand(description, timeOfEvent);
-       } catch (StringIndexOutOfBoundsException iob) {
-           return new IncorrectCommand(System.lineSeparator()
-                   + String.format(MESSAGE_ERROR, "description and/or time", EventCommand.COMMAND_WORD));
+        try {
+            final int indexOfAtPrefix = arguments.indexOf("/at");
+            String description = arguments.substring(0, indexOfAtPrefix);
+            String timeOfEvent = arguments.substring(indexOfAtPrefix + 3).trim();
+            try {
+                DateTimeFormatter oldPattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+                LocalDateTime datetime = LocalDateTime.parse(timeOfEvent, oldPattern);
+                return new EventCommand(description, datetime); //Example: 0ct 15 2019 06:20 PM
+            } catch (DateTimeParseException dpe) {
+                return new EventCommand(description, timeOfEvent); //store date as string as it is not in parsable format
+            }
+        }catch (StringIndexOutOfBoundsException iob) {
+            return new IncorrectCommand(System.lineSeparator()
+                    + String.format(MESSAGE_ERROR, "description and/or time", EventCommand.COMMAND_WORD)
+                    + EventCommand.MESSAGE_PARAM + EventCommand.MESSAGE_EXAMPLE);
         }
     }
 
@@ -96,7 +109,6 @@ public class Parser {
                 DateTimeFormatter oldPattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
                 LocalDateTime datetime = LocalDateTime.parse(dueDate, oldPattern);
                 return new DeadlineCommand(description, datetime); //Example: 0ct 15 2019 06:20 PM
-
             } catch (DateTimeParseException dpe) {
                 return new DeadlineCommand(description,dueDate); //store date as string as it is not in parsable format
             }
@@ -104,9 +116,9 @@ public class Parser {
                 return new IncorrectCommand(System.lineSeparator()
                         + String.format(MESSAGE_ERROR, "description and/or due date", DeadlineCommand.COMMAND_WORD)
                         + DeadlineCommand.MESSAGE_PARAM + DeadlineCommand.MESSAGE_EXAMPLE);
-
         }
     }
+
     /**
      * Parses arguments in the context of the delete task command.
      *
@@ -125,8 +137,7 @@ public class Parser {
     private Command prepareDone(String arguments) {
         try {
             final int targetIndex = parseArgsAsDisplayedIndex(arguments);
-
-            return new DoneCommand(targetIndex);
+            return new DoneCommand(targetIndex-1);
         } catch (NumberFormatException nfe) {
             return new IncorrectCommand(MESSAGE_INVALID_TASK_DISPLAYED_INDEX);
         }
@@ -136,6 +147,16 @@ public class Parser {
         return Integer.parseInt(args.trim());
     }
 
-}
+    private Command prepareFilter(String arguments) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MMM dd");
+        try {
+            Date date = formatter.parse(arguments);
+            //System.out.println(formatter.format(date));
+            return new FilterCommand(date); //Example: 0ct 15
 
+        } catch (ParseException e) {
+            return new FilterCommand(arguments); //filter keyword as string
+        }
+    }
+}
 

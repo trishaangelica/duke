@@ -1,4 +1,5 @@
 package duke.ui;
+
 import duke.command.CommandResult;
 import duke.data.TaskList;
 import java.io.InputStream;
@@ -15,9 +16,9 @@ public class TextUi {
     /**
      * A platform independent line separator.
      */
-    private static final String LS = System.lineSeparator();
+    public static final String LS = System.lineSeparator();
 
-    public static final String DIVIDER = "\n - - - - - - - - - - - - - - - - - - - - - - - - \n";
+    public static final String DIVIDER = LS + " - - - - - - - - - - - - - - - - - - - - - - - - " + LS;
     private final Scanner in;
     private final PrintStream out;
 
@@ -55,11 +56,11 @@ public class TextUi {
     }
 
     public void showGoodbyeMessage() {
-        showToUser(MESSAGE_GOODBYE, DIVIDER, DIVIDER);
+        showToUser(MESSAGE_GOODBYE, DIVIDER);
     }
 
     public void showInitFailedMessage() {
-        showToUser(MESSAGE_INIT_FAILED, DIVIDER, DIVIDER);
+        showToUser(MESSAGE_INIT_FAILED, DIVIDER);
     }
 
     /**

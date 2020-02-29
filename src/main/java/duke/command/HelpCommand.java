@@ -1,5 +1,7 @@
 package duke.command;
 
+import duke.ui.TextUi;
+
 /**
  * Shows help instructions.
  */
@@ -7,25 +9,26 @@ public class HelpCommand extends Command {
 
     public static final String COMMAND_WORD = "help";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows program usage instructions.\n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Shows program usage instructions." + TextUi.LS
             + "|| Parameters: " + COMMAND_WORD
-            + "\n"
+            + TextUi.LS
             + "|| Example: " + COMMAND_WORD
-            + "\n";
+            + TextUi.LS;
 
     @Override
     public CommandResult execute() {
         return new CommandResult(
                 TodoCommand.MESSAGE_USAGE
-                        + "\n" + EventCommand.MESSAGE_USAGE
-                        + "\n" + DeadlineCommand.MESSAGE_USAGE
-                        + "\n" + DoneCommand.MESSAGE_USAGE
-                        + "\n" + DeleteCommand.MESSAGE_USAGE
-                        + "\n" + FindCommand.MESSAGE_USAGE
-                        + "\n" + ListCommand.MESSAGE_USAGE
-                        + "\n" + ClearCommand.MESSAGE_USAGE
-                        + "\n" + HelpCommand.MESSAGE_USAGE
-                        + "\n" + ExitCommand.MESSAGE_USAGE
+                        + TextUi.LS + EventCommand.MESSAGE_USAGE
+                        + TextUi.LS + DeadlineCommand.MESSAGE_USAGE
+                        + TextUi.LS + DoneCommand.MESSAGE_USAGE
+                        + TextUi.LS + DeleteCommand.MESSAGE_USAGE
+                        + TextUi.LS + FindCommand.MESSAGE_USAGE
+                        + TextUi.LS + FilterCommand.MESSAGE_USAGE
+                        + TextUi.LS + ListCommand.MESSAGE_USAGE
+                        + TextUi.LS + ClearCommand.MESSAGE_USAGE
+                        + TextUi.LS + HelpCommand.MESSAGE_USAGE
+                        + TextUi.LS + ExitCommand.MESSAGE_USAGE
         );
     }
 }

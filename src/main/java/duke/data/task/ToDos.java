@@ -5,6 +5,7 @@ public class ToDos extends Task {
     public ToDos(String description) throws NullPointerException {
         super(description);
         super.setTaskType("T");
+        super.setDate(null);
     }
 
     @Override
@@ -14,6 +15,8 @@ public class ToDos extends Task {
 
     @Override
     public boolean isSameTask(Task toCheck) {
-        return super.isSameTask(toCheck);
+        return (toCheck == this)
+                || (toCheck != null
+                && toCheck.getDescription().equals(this.getDescription()));
     }
 }

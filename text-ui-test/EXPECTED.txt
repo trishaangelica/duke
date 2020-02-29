@@ -12,83 +12,122 @@ Hello from
 |       What can I do for you today?            |
  - - - - - - - - - - - - - - - - - - - - - - - - 
 
-Enter command: 
+Using storage file : duke.txt
+
+Great we're all loaded!
+Have a look at your previously saved list!
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+	1. [T]-[undone] read book
+	2. [D]-[done] return book(by: June 6th)
+	3. [T]-[undone] join sports club
+	4. [T]-[undone] borrow book
+	5. [D]-[undone] return book(by: Sunday)
+	6. [E]-[undone] project meeting(at: Mon 2-4pm)
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+Enter command: [Command entered:todo read book]
+This task already exists in the list.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:deadline return book /by June 6th]
 Got it. I've added this task: 
-	[T][✘] read book
-Now you have 1 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Got it. I've added this task: 
-	[D][✘] return book (by: June 6th)
-Now you have 2 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Got it. I've added this task: 
-	[E][✘] project meeting (at: Aug 6th 2-4pm)
-Now you have 3 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Got it. I've added this task: 
-	[T][✘] join sports club
-Now you have 4 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
- Nice! I've marked this task as done: [✓] read book
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
- Nice! I've marked this task as done: [✓] join sports club
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Got it. I've added this task: 
-	[T][✘] borrow book
-Now you have 5 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-
-Currently, you have these items in your list: 📌
-
-1. [T][✓] read book
-2. [D][✘] return book (by: June 6th)
-3. [E][✘] project meeting (at: Aug 6th 2-4pm)
-4. [T][✓] join sports club
-5. [T][✘] borrow book
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Got it. I've added this task: 
-	[D][✘] return book (by: Sunday)
-Now you have 6 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
-
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Got it. I've added this task: 
-	[E][✘] project meeting (at: Mon 2-4pm)
+	[D]-[undone] return book (by: June 6th).
 Now you have 7 tasks in your list.
- - - - - - - - - - - - - - - - - - - - - - - - - 
-Enter command: 
 
  - - - - - - - - - - - - - - - - - - - - - - - - 
- Noted! I've removed this task:
-	[E][✘] project meeting (at: Aug 6th 2-4pm)
- Now you have 6 tasks in your list.
+
+Enter command: [Command entered:event project meeting /at Aug 6th 2-4pm]
+Got it. I've added this task: 
+	[E]-[undone] project meeting (at: Aug 6th 2-4pm).
+Now you have 8 tasks in your list.
+
  - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:todo join sports club]
+Got it. I've added this task: 
+	[T]-[undone] join sports club.
+Now you have 9 tasks in your list.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:done 1]
+Hooray! This task has been marked done: [D]-[done] return book(by: June 6th)
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:done 4]
+Hooray! This task has been marked done: [D]-[done] return book(by: Sunday)
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:todo borrow book]
+Got it. I've added this task: 
+	[T]-[undone] borrow book.
+Now you have 10 tasks in your list.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:list]
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Currently, you have these items in your list: 
+
+	1. [T]-[undone] read book
+	2. [D]-[done] return book(by: June 6th)
+	3. [T]-[undone] join sports club
+	4. [T]-[undone] borrow book
+	5. [D]-[done] return book(by: Sunday)
+	6. [E]-[undone] project meeting(at: Mon 2-4pm)
+	7. [D]-[undone] return book (by: June 6th)
+	8. [E]-[undone] project meeting (at: Aug 6th 2-4pm)
+	9. [T]-[undone] join sports club
+	10. [T]-[undone] borrow book
+
+	10 tasks listed!
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:deadline return book /by Sunday]
+Got it. I've added this task: 
+	[D]-[undone] return book (by: Sunday).
+Now you have 11 tasks in your list.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:event project meeting /at Mon 2-4pm]
+Got it. I've added this task: 
+	[E]-[undone] project meeting (at: Mon 2-4pm).
+Now you have 12 tasks in your list.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:delete 3]
+Deleted task: [T]-[undone] join sports club.
+	Now you have 11 tasks in your list.
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Enter command: [Command entered:find book]
+
+Here are the matching tasks in your list:
+
+Currently, you have these items in your list: 
+
+	1. [T]-[undone] read book
+	2. [D]-[done] return book(by: June 6th)
+	3. [T]-[undone] borrow book
+	4. [D]-[done] return book(by: Sunday)
+	5. [D]-[undone] return book (by: June 6th)
+	6. [T]-[undone] borrow book
+	7. [D]-[undone] return book (by: Sunday)
+
+	7 tasks listed!
+
+ - - - - - - - - - - - - - - - - - - - - - - - - 
+
 Enter command: 
