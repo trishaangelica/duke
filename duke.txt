@@ -1,0 +1,7 @@
+T | 1 | read book
+D | 0 | return book | June 6th
+T | 1 | join sports club
+T | 0 | borrow book
+D | 0 | return book | Sunday
+E | 0 | project meeting | Mar 02 2020 12:00 PM
+D | 0 | project CS3235 submission | Mar 02 2020 12:00 PM
