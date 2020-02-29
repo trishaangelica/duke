@@ -13,7 +13,7 @@ import static duke.data.TaskList.filterList;
 
 public class FilterCommand extends Command {
     public static final String COMMAND_WORD = "filter";
-    public static final String EMPTY_LIST_MESSAGE = TextUi.LS + "|| OOPS! No task in the list fits that category."
+    public static final String EMPTY_LIST_MESSAGE = TextUi.LS + "|| OOPS! No task in the list fits that category..."
             + TextUi.LS + "|| Accepted category words are: [todo, event, deadline, done, undone, [MMM-dd]]"
             + TextUi.LS;
     public static final String MESSAGE_PARAM = "|| Parameters: " + COMMAND_WORD + " [CATEGORY]" + TextUi.LS;
