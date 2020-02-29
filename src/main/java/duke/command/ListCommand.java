@@ -13,7 +13,7 @@ public class ListCommand extends Command {
     public static final String COMMAND_WORD = "list";
     public static final String EMPTY_LIST_MESSAGE = "|| OOPS! List is currently empty.";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Displays all tasks stored in the list.\n"
+            + ": Lists all tasks stored in the list.\n"
             + "|| Parameters: " + COMMAND_WORD
             + "\n"
             + "|| Example: " + COMMAND_WORD
