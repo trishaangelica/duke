@@ -14,7 +14,7 @@ import static duke.data.TaskList.filterList;
  */
 public class FindCommand extends Command {
     public static final String COMMAND_WORD = "find";
-    public static final String EMPTY_LIST_MESSAGE = "|| OOPS! There is no such task in the list.";
+    public static final String EMPTY_LIST_MESSAGE = "|| OOPS! There is no such task in your list.";
     public static final String MESSAGE_PARAM = "\n|| Parameters: " + COMMAND_WORD + " [KEYWORD]\n";
     public static final String MESSAGE_EXAMPLE = "|| Example: " + COMMAND_WORD + " book\n";
     public static final String MESSAGE_USAGE = COMMAND_WORD
