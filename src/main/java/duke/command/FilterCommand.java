@@ -5,9 +5,14 @@ import duke.data.task.Task;
 import duke.ui.TextUi;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
+
+/**
+ * Shows a filtered list based on keyword.
+ * If keyword provided is in MMM-dd format, tasks in list will be in chronological order.
+ * From earliest to latest time of task.
+ */
 
 import static duke.data.TaskList.filterList;
 
@@ -26,6 +31,12 @@ public class FilterCommand extends Command {
     String keyword; //keep original keyword
     Date date;
 
+
+    /**
+     * @param keyword filters the list based on keyword provided
+     */
+
+
     public FilterCommand(String keyword) {
         if (keyword.equals("todo")) {
             this.keyword = keyword;
@@ -42,7 +53,9 @@ public class FilterCommand extends Command {
         }
     }
 
-
+    /**
+     * @param dateTime filters the list to show events occurring on specified date.
+     */
     public FilterCommand(Date dateTime) {
         this.date = dateTime;
     }
