@@ -19,8 +19,6 @@ public class ListCommand extends Command {
             + TextUi.LS
             + MESSAGE_PARAM + MESSAGE_EXAMPLE;
 
-
-
     @Override
     public CommandResult execute() {
         try {
