@@ -49,8 +49,8 @@ public class Duke {
             String userCommandText = ui.getUserCommand();
             command = new Parser().parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
-            saveListToStorageFile(taskList);
             ui.showResultToUser(result);
+            saveListToStorageFile(taskList);
 
         } while (!ExitCommand.isExit(command));
     }
@@ -58,7 +58,7 @@ public class Duke {
     private void saveListToStorageFile(TaskList taskList){
         try{
             storage.save(taskList);
-        }catch (StorageFile.StorageOperationException e){
+        } catch (StorageFile.StorageOperationException e){
             System.out.println("Error saving data to storage file..");
         }
     }
