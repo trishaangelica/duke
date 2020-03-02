@@ -305,25 +305,27 @@ Expected outcome:
 * *Todo* : `todo DESCRIPTION` ||
 e.g. `todo read book`
 
-* *Deadline* : `deadline DESCRIPTION /by [DUE DATE & TIME]` || 
-e.g. `deadline project submission /by 2020-03-02 1200`   **OR**   `deadline return book /by June 6th`
+* *Deadline* : `deadline DESCRIPTION /by [DUE DATE & TIME]` 
 
-* *Event* : `event DESCRIPTION /by [EVENT TIME & VENUE]` || 
-e.g. `event project meeting /at 2020-03-02 1200` **OR** `event party /at Julia's house tmr`
+|| e.g. `deadline project submission /by 2020-03-02 1200`   **OR**   `deadline return book /by June 6th`
 
-* *Mark* : `done [INDEX]` || 
-e.g. `done 1`
+* *Event* : `event DESCRIPTION /by [EVENT TIME & VENUE]` 
+
+|| e.g. `event project meeting /at 2020-03-02 1200` **OR** `event party /at Julia's house tmr`
+
+* *Mark* : `done [INDEX]` || e.g. `done 1`
 
 * *List* : `list` 
 
 * *Find* : `find KEYWORD` || 
 e.g. `find book`
 
-* *Delete* : `delete [INDEX]` 
+* *Delete* : `delete [INDEX]` || 
 e.g. `delete 3`
 
-* *Filter* : `filter [CATEGORY]` || 
-e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter Mar 02`
+* *Filter* : `filter [CATEGORY]` 
+
+|| e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter Mar 02`
 
 * *Clear* : `clear`
 
