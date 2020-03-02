@@ -191,7 +191,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src = "images/delete_example.png" width "400">
+<img src = "images/delete_example.png" width = "400">
 
 &nbsp;
 
@@ -239,7 +239,7 @@ Example of usage:`filter DATE`
 > - Displays all deadlines/events occurring on a specific date. 
 
 | :bulb: | Jarvis is smart enough to list events/ deadlines occurring on the same day in chronological order! |
-| ------------- | ------------- |
+
 
 &nbsp;
 
@@ -277,7 +277,7 @@ Example of usage:
 
 Expected outcome:
 
-<img src #"images/help.PNG" width# "400">
+<img src = "images/help.PNG" width = "400">
 
 &nbsp;
 
@@ -302,27 +302,27 @@ Expected outcome:
 
 ## 3. Command Summary 
 
-* *Todo* : `todo DESCRIPTION` \
+* *Todo* : `todo DESCRIPTION` ||
 e.g. `todo read book`
 
-* *Deadline* : `deadline DESCRIPTION /by [DUE DATE & TIME]` \
+* *Deadline* : `deadline DESCRIPTION /by [DUE DATE & TIME]` || 
 e.g. `deadline project submission /by 2020-03-02 1200`   **OR**   `deadline return book /by June 6th`
 
-* *Event* : `event DESCRIPTION /by [EVENT TIME & VENUE]` \
+* *Event* : `event DESCRIPTION /by [EVENT TIME & VENUE]` || 
 e.g. `event project meeting /at 2020-03-02 1200` **OR** `event party /at Julia's house tmr`
 
-* *Mark* : `done [INDEX]` \
+* *Mark* : `done [INDEX]` || 
 e.g. `done 1`
 
 * *List* : `list` 
 
-* *Find* : `find KEYWORD` \
+* *Find* : `find KEYWORD` || 
 e.g. `find book`
 
 * *Delete* : `delete [INDEX]` 
 e.g. `delete 3`
 
-* *Filter* : `filter [CATEGORY]` \
+* *Filter* : `filter [CATEGORY]` || 
 e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter Mar 02`
 
 * *Clear* : `clear`
