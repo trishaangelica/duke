@@ -215,7 +215,7 @@ Example of usage:`filter todo`
 
 Expected outcome:
 
-<img src #"images/filter_todo_example.PNG" width# "400">
+<img src ="images/filter_todo_example.PNG" width = "400">
 
 
 Example of usage:`filter deadline`
