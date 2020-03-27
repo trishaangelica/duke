@@ -302,30 +302,32 @@ Expected outcome:
 
 ## 3. Command Summary 
 
-* *Todo* : `todo DESCRIPTION` ||
-e.g. `todo read book`
+* *Todo* : `todo DESCRIPTION` 
+
+    * e.g. `todo read book`
 
 * *Deadline* : `deadline DESCRIPTION /by [DUE DATE & TIME]` 
 
-|| e.g. `deadline project submission /by 2020-03-02 1200`   **OR**   `deadline return book /by June 6th`
+    * e.g. `deadline project submission /by 2020-03-02 1200`   **OR**   `deadline return book /by June 6th`
 
 * *Event* : `event DESCRIPTION /by [EVENT TIME & VENUE]` 
 
-|| e.g. `event project meeting /at 2020-03-02 1200` **OR** `event party /at Julia's house tmr`
+    * e.g. `event project meeting /at 2020-03-02 1200` **OR** `event party /at Julia's house tmr`
 
-* *Mark* : `done [INDEX]` || e.g. `done 1`
+* *Mark* : `done [INDEX]`  
+    * e.g. `done 1`
 
 * *List* : `list` 
 
-* *Find* : `find KEYWORD` || 
-e.g. `find book`
+* *Find* : `find KEYWORD` 
+    * e.g. `find book`
 
-* *Delete* : `delete [INDEX]` || 
-e.g. `delete 3`
+* *Delete* : `delete [INDEX]` 
+    * e.g. `delete 3`
 
 * *Filter* : `filter [CATEGORY]` 
 
-|| e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter Mar 02`
+    * e.g. `filter todo` **OR** `filter deadline` **OR** `filter event` **OR** `filter Mar 02`
 
 * *Clear* : `clear`
 
